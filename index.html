@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>SMP Brand - Super App | Pi Testnet</title>
-<link rel="icon" href="logo.png"><link rel="apple-touch-icon" href="logo.png">
 <script src="https://sdk.minepi.com/pi-sdk.js"></script>
 <style>*{box-sizing:border-box;margin:0;padding:0;font-family:Arial}body{background:#0f0f1a;color:#fff;padding-bottom:85px}
 header{background:linear-gradient(135deg,#6a1b9a,#ffcc00);padding:20px 14px;text-align:center;border-radius:0 0 22px 22px}
 header h1{font-size:26px}header p{font-size:14px;margin-top:6px}
-.logo{width:90px;height:90px;border-radius:22px;border:3px solid #fff;object-fit:cover;background:#fff}
 .hero{background:#1e1e2e;margin:12px;border-radius:16px;padding:16px;text-align:center}
 .btn{width:100%;padding:13px;border:0;border-radius:12px;font-weight:700;margin-top:9px;cursor:pointer;font-size:15px}
 .btn-pi{background:#ffcc00;color:#000}.btn-dark{background:#6a1b9a;color:#fff}.btn-out{background:transparent;color:#ffcc00;border:2px solid #ffcc00}
@@ -19,7 +17,7 @@ header h1{font-size:26px}header p{font-size:14px;margin-top:6px}
 .page{display:none}.page.active{display:block}.badge{background:#ffcc00;color:#000;font-size:11px;padding:3px 8px;border-radius:20px;font-weight:700}
 .small{font-size:12px;color:#aaa;line-height:1.5}.ann{background:#ffcc00;color:#000;padding:8px;text-align:center;font-weight:700;font-size:12px;margin:10px 12px;border-radius:10px}
 </style></head><body>
-<header><img src="logo.png" class="logo" alt="SMP Brand Logo"><h1>👋 Welcome Pioneer<br>SMP Brand Super App</h1><p>Shop • Sell • Play • Pay • Tokenize • Map • GCV<br>All in One Place - Testnet Ready</p><span class="badge">✦ PI TESTNET • GCV $314,159 ✦</span></header>
+<header><h1>👋 Welcome Pioneer<br>SMP Brand Super App</h1><p>Shop • Sell • Play • Pay • Tokenize • Map • GCV<br>All in One Place - Testnet Ready</p><span class="badge">✦ PI TESTNET • GCV $314,159 ✦</span></header>
 <div class="ann">📢 Burial + Stokvel + Jobs + Farming NOW LIVE! | Pi = Pay | Rand = Value Only</div>
 <div id="homePage" class="page active">
 <div class="hero"><h2 style="color:#ffcc00">Your Pi Life, In One App</h2><p class="small">Login with Pi, shop basics, become vendor, play games, calculate GCV, tokenize assets.<br>Rand shows VALUE for clarity ONLY. You PAY with Pi, OUSD or OpenPay.</p>
@@ -97,4 +95,57 @@ header h1{font-size:26px}header p{font-size:14px;margin-top:6px}
 <div class="box"><b>Info@smpbrand.co.za</b> - General<br><button class="btn btn-dark" onclick="window.location.href='mailto:Info@smpbrand.co.za'">Email Info</button></div>
 <div class="box"><b>Sales@smpbrand.co.za</b> - Buy / Sell<br>WhatsApp Chris: +27 68 055 8397<br><button class="btn btn-dark" onclick="window.location.href='mailto:Sales@smpbrand.co.za'">Email Sales</button><button class="btn btn-pi" onclick="window.open('https://wa.me/27680558397?text=Hi Chris')">WhatsApp Chris Sales</button></div>
 <div class="box"><b>Support@smpbrand.co.za</b> - Help / Complaints<br>WhatsApp Alice: +27 75 776 1266<br><button class="btn btn-dark" onclick="window.location.href='mailto:Support@smpbrand.co.za'">Email Support</button><button class="btn btn-pi" onclick="window.open('https://wa.me/27757761266?text=Hi Alice')">WhatsApp Alice Support</button></div>
-<div class="box"><b>Admin@smpbrand.co.za</b> -
+<div class="box"><b>Admin@smpbrand.co.za</b> - Admin / Legal<br>WhatsApp Moses: +27 60 597 4789<br><button class="btn btn-dark" onclick="window.location.href='mailto:Admin@smpbrand.co.za'">Email Admin</button><button class="btn btn-pi" onclick="window.open('https://wa.me/27605974789?text=Hi Moses')">WhatsApp Moses Admin</button></div>
+</div></div>
+<div style="text-align:center;color:#888;font-size:12px;padding:14px">SMP Brand Super App © 2026 • Testnet • site.smpbrand.co.za<br>Rand = Value Only • Pay with Pi / OUSD / OpenPay<br>Best in Pi Browser</div>
+<div class="tabs">
+<button class="active" onclick="showPage('home',this)">🏠<br>Home</button><button onclick="showPage('shop',this)">🛍️<br>Shop</button><button onclick="showPage('offices',this)">🏢<br>Offices</button><button onclick="showPage('vendor',this)">🏪<br>Vendor</button><button onclick="showPage('admin',this)">🔐<br>Admin</button><button onclick="showPage('games',this)">🎮<br>Games</button><button onclick="showPage('pay',this)">💳<br>Pay</button><button onclick="showPage('wallet',this)">👛<br>Wallet</button><button onclick="showPage('token',this)">🪙<br>Token</button><button onclick="showPage('map',this)">🗺️<br>Map</button><button onclick="showPage('gcv',this)">🧮<br>GCV</button><button onclick="showPage('orders',this)">📦<br>Orders</button><button onclick="showPage('jobs',this)">💼<br>Jobs</button><button onclick="showPage('education',this)">🎓<br>Education</button><button onclick="showPage('ideas',this)">💡<br>Ideas</button><button onclick="showPage('enquiries',this)">❓<br>Enquiries</button><button onclick="showPage('contact',this)">📧<br>Contact</button>
+</div>
+<script>
+const GCV=314159, RATE=17.5;
+const products=[
+{name:"Maize Meal 10kg",rand:110,cat:"Food & Groceries",img:"https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400"},
+{name:"Cooking Oil 2L",rand:75,cat:"Food & Groceries",img:"https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=400"},
+{name:"Rice 5kg",rand:85,cat:"Food & Groceries",img:"https://images.unsplash.com/photo-1516684732162-798a0062be99?w=400"},
+{name:"Bread",rand:20,cat:"Food & Groceries",img:"https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400"},
+{name:"SMP T-Shirt",rand:250,cat:"Fashion",img:"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400"},
+{name:"SMP Hoodie",rand:450,cat:"Fashion",img:"https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=400"},
+{name:"Sneakers",rand:850,cat:"Fashion",img:"https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400"},
+{name:"Smartphone",rand:3500,cat:"Electronics",img:"https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400"},
+{name:"Air Fryer",rand:1500,cat:"Home",img:"https://images.unsplash.com/photo-1585515320310-259814833e62?w=400"},
+{name:"Toyota Corolla 2018",rand:180000,cat:"Cars",img:"https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?w=400"},
+{name:"House 2-Bed Daveyton",rand:550000,cat:"Property",img:"https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=400"},
+{name:"Land 300sqm Daveyton",rand:250000,cat:"Property",img:"https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=400"},
+];
+const offices=[
+["🛍️ Shop Office","Maize Value R110 - Pay in Pi","shop"],["🏠 Property Office Alone","2-Bed Value R550k","shop"],["🌍 Land Office Alone","300sqm Value R250k","shop"],["🚗 Cars Office Alone","Corolla Value R180k","shop"],["🌾 Farming Office Alone","Goat Value R2,500, Cow R12,000","shop"],["🧱 Building Office Alone","Cement Value R115","shop"],["🔧 Mechanic Office Alone","Minor Value R850","shop"],["🧵 Embroidery Office Alone","T-Shirt Value R250","shop"],["🛡️ Insurance Office Alone","Funeral Value R150pm - Enquiry Only","enquiries"],["⚰️ Burial Society Office Alone","Join Value R120pm - OWN GROUP","enquiries"],["🤝 Stokvel Office Alone","Grocery Value R500pm - OWN GROUP","enquiries"],["📱 Airtime Office Alone","Airtime Value R10/R30/R100","shop"],["🚕 Transport Office Alone","Taxi Value R18","enquiries"],["🏨 Hotel Office Alone","Guesthouse Value R550","shop"],["💍 Gold / Business Office Alone","Gold Value R45k","shop"],["⚡ Solar Office Alone","Solar Value R150k","shop"],["💼 Jobs Office Alone","Managers, Skilled, Drivers","jobs"],["🎓 Education Office Alone","Business + Pi","education"],["💡 Ideas Spot","To Info@smpbrand.co.za","ideas"],["❓ Enquiries Spot","To RIGHT email","enquiries"],["🚚 Delivery Office","Pickup FREE, PUDO R59","shop"],["📧 Contact Office","4 Emails + 3 WhatsApps","contact"],
+];
+let cats=["All","Food & Groceries","Fashion","Beauty","Electronics","Home","Health","Digital","Services","Cars","Property"];
+let cur="All",orders=JSON.parse(localStorage.getItem('smp_orders')||'[]'),points=0,user=null,ideas=JSON.parse(localStorage.getItem('smp_ideas')||'[]');
+function priceHTML(r){let pi=(r/RATE/GCV).toFixed(6), ousd=(r/RATE).toFixed(2); return `Value R${r.toLocaleString()}<br><span style="font-size:11px;color:#ffcc00">Pay ${pi} Pi • ${ousd} OUSD</span>`}
+function render(){
+let c=document.getElementById('cats');c.innerHTML=cats.map(x=>`<button class="${x===cur?'active':''}" onclick="filterCat('${x}')">${x}</button>`).join('');
+let g=document.getElementById('shopGrid');g.innerHTML='';
+products.filter(p=>cur==='All'||p.cat===cur).forEach(p=>{g.innerHTML+=`<div class="card"><img src="${p.img}"><h4>${p.name}</h4><p>${priceHTML(p.rand)}</p><button onclick="buyProduct('${p.name}',${p.rand})">Pay with Pi</button></div>`});
+document.getElementById('featured').innerHTML=products.slice(0,4).map(p=>`<div class="card"><img src="${p.img}"><h4>${p.name}</h4><p>${priceHTML(p.rand)}</p><button onclick="buyProduct('${p.name}',${p.rand})">Pay with Pi</button></div>`).join('');
+document.getElementById('officeList').innerHTML=offices.map(o=>`<div class="box"><h4>${o[0]}</h4><p class="small">${o[1]}</p><button class="btn btn-pi" onclick="showPage('${o[2]}')">Open Office →</button></div>`).join('');
+updateOrders();
+}
+function filterCat(x){cur=x;render();}
+function showPage(id,el){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));let pg=document.getElementById(id+'Page'); if(pg) pg.classList.add('active'); if(el){document.querySelectorAll('.tabs button').forEach(b=>b.classList.remove('active'));el.classList.add('active');}window.scrollTo(0,0);}
+function loginPi(){if(typeof Pi==='undefined'){alert('Open in Pi Browser to Login with Pi. Guest mode for now.');document.getElementById('userInfo').innerText='Guest Mode - Open in Pi Browser for full login';return;}try{Pi.init({version:"2.0",sandbox:true});Pi.authenticate(['username','payments'],function(a){user=a.user;document.getElementById('userInfo').innerText='Welcome @'+user.username+' ✅';document.getElementById('walletInfo').innerText='Connected as @'+user.username;});}catch(e){alert(e.message)}}
+function buyProduct(n,r){payPi(n,r)}
+function payPi(n,r){let del=document.getElementById('delSel')?parseFloat(document.getElementById('delSel').value)||0:0; if(r>=500) del=0; let grand=r+del, pi=grand/RATE/GCV; orders.push({name:n,rand:r,delivery:del,total:grand,pi:pi,date:new Date().toLocaleString(),status:'Testnet - Pay Pi / OUSD'}); localStorage.setItem('smp_orders',JSON.stringify(orders)); updateOrders(); alert('Order: '+n+'\nValue R'+grand+' (clarity only)\nPAY: '+pi.toFixed(6)+' Pi OR '+(grand/RATE).toFixed(2)+' OUSD / OpenPay'); showPage('orders');}
+function updateOrders(){let b=document.getElementById('ordersBox'); if(!b) return; if(!orders.length) return; b.innerHTML=orders.map(o=>`<div style="border-bottom:1px solid #333;padding:8px 0"><b>${o.name}</b><br><span style="color:#ffcc00">Value R${o.total} | PAY ${o.pi.toFixed(6)} Pi OR ${(o.total/RATE).toFixed(2)} OUSD</span><br><small>${o.status} • ${o.date}</small></div>`).join(''); document.getElementById('adminOrders').innerHTML=b.innerHTML; document.getElementById('aOrders').innerText=orders.length; document.getElementById('aRand').innerText='R'+orders.reduce((a,o)=>a+o.total,0).toLocaleString();}
+function applyVendor(){let n=document.getElementById('vName').value||'Pioneer';let cat=document.getElementById('vCat').value; window.location.href='mailto:Admin@smpbrand.co.za?subject=Vendor Application - '+encodeURIComponent(cat)+'&body='+encodeURIComponent('Name:'+n); alert('Thank you '+n+'! Vendor application sent to Admin.'); document.getElementById('vendorList').innerHTML+='<br>⏳ '+n+' - '+cat+' - Pending';}
+function adminLogin(){if(document.getElementById('adminPass').value==='SMP2026'){document.getElementById('adminPanel').style.display='block'; document.getElementById('adminExtra').innerHTML='<p class="small">Ideas: '+(ideas.join(' | ')||'None')+'</p><p class="small">Stokvel Separate | Burial Separate</p>'; alert('Welcome Admin!');}else{alert('Wrong password');}}
+function openGame(n){points+=10;document.getElementById('gamePoints').innerText=points;alert(n+' - You earned 10 points! Total: '+points);}
+function createToken(){let n=document.getElementById('tName').value||'My Asset';let v=parseFloat(document.getElementById('tValue').value)||10000;let pi=v/RATE/GCV; document.getElementById('tokenList').innerHTML+='<br>🪙 '+n+' - Value R'+v+' = Pay '+pi.toFixed(6)+' Pi'; document.getElementById('tokOut').innerText='Value R'+v+' = Pay '+pi.toFixed(6)+' Pi OR '+(v/RATE).toFixed(2)+' OUSD'; alert('Token Created (Testnet)');}
+function calcGCV(){let v=parseFloat(document.getElementById('gcvRand').value)||0;let gcv=parseFloat(document.getElementById('consVal').value)||314159;let rate=parseFloat(document.getElementById('randRate').value)||17.5;document.getElementById('gcvOut').innerText=(v/rate/gcv).toFixed(6)+' Pi / '+(v/rate).toFixed(2)+' OUSD';}
+function calcGCV2(){let v=parseFloat(document.getElementById('gcvPi').value)||0;let gcv=parseFloat(document.getElementById('consVal').value)||314159;let rate=parseFloat(document.getElementById('randRate').value)||17.5;document.getElementById('gcvOut2').innerText='$'+(v*gcv).toLocaleString()+' = R'+(v*gcv*rate).toLocaleString()+' Value';}
+function calcGCV3(){let v=parseFloat(document.getElementById('gcvOusd').value)||0;let gcv=parseFloat(document.getElementById('consVal').value)||314159;let rate=parseFloat(document.getElementById('randRate').value)||17.5;document.getElementById('gcvOut3').innerText=(v/gcv).toFixed(6)+' Pi = R'+(v*rate).toLocaleString()+' Value';}
+function submitIdea(){let t=document.getElementById('ideaText').value; if(!t) return alert('Write idea'); ideas.push(t); localStorage.setItem('smp_ideas',JSON.stringify(ideas)); window.location.href='mailto:Info@smpbrand.co.za?subject=IDEA REQUEST&body='+encodeURIComponent(t); alert('Idea sent to Info');}
+function submitEnq(){let type=document.getElementById('enqType').value,msg=document.getElementById('enqMsg').value,name=document.getElementById('enqName').value,phone=document.getElementById('enqPhone').value; let map={General:'Info@smpbrand.co.za',Sales:'Sales@smpbrand.co.za',Support:'Support@smpbrand.co.za',Admin:'Admin@smpbrand.co.za',Complaint:'Support@smpbrand.co.za',Review:'Support@smpbrand.co.za'}; let to=map[type]; window.location.href='mailto:'+to+'?subject=ENQUIRY - '+type+'&body='+encodeURIComponent('Name:'+name+' Phone:'+phone+' Msg:'+msg); alert('Enquiry sent to '+to);}
+function applyJob(){let j=document.getElementById('jobType').value,n=document.getElementById('jobName').value; window.location.href='mailto:Admin@smpbrand.co.za?subject=JOB - '+encodeURIComponent(j)+'&body='+encodeURIComponent(n); alert('Job application sent to Admin');}
+render();
+</script></body></html>
