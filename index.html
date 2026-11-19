@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SMP Brand - Pi Shop</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;font-family:Arial,sans-serif}
+body{background:#0f0f1a;color:#fff;padding-bottom:90px}
+header{background:#6a1b9a;padding:16px;text-align:center;position:sticky;top:0;z-index:10}
+header h1{font-size:22px}header p{font-size:13px;opacity:.9}
+.balance{background:#1e1e2e;margin:14px;border-radius:14px;padding:14px;display:flex;justify-content:space-between;align-items:center}
+.balance b{color:#ffcc00;font-size:22px}
+.balance button{background:#ffcc00;border:0;padding:8px 14px;border-radius:20px;font-weight:700}
+.tabs{position:fixed;bottom:0;left:0;right:0;background:#1e1e2e;display:flex;border-top:1px solid #333}
+.tabs button{flex:1;background:0;border:0;color:#aaa;padding:12px 0;font-size:13px}
+.tabs button.active{color:#ffcc00;border-top:3px solid #ffcc00}
+.page{display:none;padding:0 14px}.page.active{display:block}
+.card{background:#1e1e2e;border-radius:14px;padding:12px;margin:12px 0;display:flex;gap:12px;align-items:center}
+.card img{width:70px;height:70px;border-radius:10px;object-fit:cover;background:#333}
+.card h3{font-size:16px}.card p{font-size:13px;color:#bbb;margin:4px 0}
+.price{color:#ffcc00;font-weight:700}
+.card button{background:#6a1b9a;color:#fff;border:0;padding:8px 12px;border-radius:20px;margin-top:6px}
+input,select{width:100%;padding:12px;border-radius:10px;border:0;margin:8px 0;background:#2a2a3a;color:#fff}
+.btn{width:100%;background:#ffcc00;border:0;padding:14px;border-radius:12px;font-weight:800;margin-top:10px}
+h2{margin:16px 0 4px;font-size:19px}
+.small{font-size:13px;color:#bbb}
+.success{background:#1e3a1e;padding:12px;border-radius:10px;margin-top:10px;display:none}
+</style>
+</head>
+<body>
+<header><h1>💜 SMP BRAND</h1><p>Shop, Recharge with Pi</p></header>
+<div class="balance"><div>Pi Balance<br><b id="bal">12.50 π</b></div><button onclick="connect()">Connect Pi Wallet</button></div>
+<div id="shop" class="page active">
+<h2>🔥 Hot Deals</h2>
+<div class="card"><img src="https://via.placeholder.com/70"><div><h3>SMP T-Shirt</h3><p>Premium Cotton - Black</p><span class="price">2.5 π</span><br><button onclick="buy('SMP T-Shirt',2.5)">Buy with Pi</button></div></div>
+<div class="card"><img src="https://via.placeholder.com/70"><div><h3>SMP Hoodie</h3><p>Warm Fleece - Purple</p><span class="price">5.0 π</span><br><button onclick="buy('SMP Hoodie',5)">Buy with Pi</button></div></div>
+<div class="card"><img src="https://via.placeholder.com/70"><div><h3>SMP Cap</h3><p>Stylish Snapback</p><span class="price">1.5 π</span><br><button onclick="buy('SMP Cap',1.5)">Buy with Pi</button></div></div>
+<div class="card"><img src="https://via.placeholder.com/70"><div><h3>Airtime R100</h3><p>MTN / Vodacom / Cell C</p><span class="price">3.2 π</span><br><button onclick="buy('Airtime R100',3.2)">Buy with Pi</button></div></div>
+<div id="msg" class="success"></div>
+</div>
+<div id="recharge" class="page">
+<h2>📱 Recharge & Airtime</h2>
+<p class="small">Pay with Pi, get airtime / data instantly</p>
+<select id="net"><option>MTN</option><option>Vodacom</option><option>Cell C</option><option>Telkom</option></select>
+<input id="phone" placeholder="Phone number e.g. 0712345678">
+<select id="amt"><option value="1.2">R30 - 1.2 π</option><option value="2.0">R50 - 2.0 π</option><option value="3.2">R100 - 3.2 π</option><option value="6.0">R200 - 6.0 π</option></select>
+<button class="btn" onclick="recharge()">Pay with Pi →</button>
+<div id="msg2" class="success"></div>
+</div>
+<div id="orders" class="page">
+<h2>📦 My Orders</h2>
+<div id="orderList"><p class="small">No orders yet. Buy something to see it here.</p></div>
+</div>
+<div id="account" class="page">
+<h2>👤 My Account</h2>
+<p><b>Name:</b> Smpbraj</p><p style="margin-top:8px"><b>Pi Wallet:</b> Connected ✅</p><p style="margin-top:8px"><b>Balance:</b> <span id="bal2">12.50 π</span></p>
+<p style="margin-top:14px" class="small">SMP Brand - Daveyton, Gauteng<br>WhatsApp Support: 071 XXX XXXX</p>
+<button class="btn" onclick="alert('Wallet Connected!')">Connect Pi Wallet</button>
+</div>
+<div class="tabs">
+<button class="active" onclick="show('shop',this)">🛍️ Shop</button>
+<button onclick="show('recharge',this)">📱 Recharge</button>
+<button onclick="show('orders',this)">📦 Orders</button>
+<button onclick="show('account',this)">👤 Account</button>
+</div>
+<script>
+let balance=12.50; let orders=[];
+function show(id,btn){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.tabs button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');window.scrollTo(0,0)}
+function update(){document.getElementById('bal').innerText=balance.toFixed(2)+' π';document.getElementById('bal2').innerText=balance.toFixed(2)+' π'}
+function buy(name,price){if(balance<price){alert('Not enough Pi!');return}balance-=price;orders.unshift(name+' - '+price+' π');update();let m=document.getElementById('msg');m.style.display='block';m.innerText='✅ Order placed: '+name+'! Check Orders tab.';renderOrders()}
+function recharge(){let p=document.getElementById('phone').value;let a=document.getElementById('amt');let price=parseFloat(a.value);if(!p||p.length<10){alert('Enter valid phone number');return}if(balance<price){alert('Not enough Pi!');return}balance-=price;update();let m=document.getElementById('msg2');m.style.display='block';m.innerText='✅ Success! Recharge sent to '+p+' - '+a.options[a.selectedIndex].text;orders.unshift('Recharge '+a.options[a.selectedIndex].text+' to '+p);renderOrders()}
+function renderOrders(){if(!orders.length)return;document.getElementById('orderList').innerHTML=orders.map(o=>'<div class="card"><div>✅ '+o+'<br><span class="small">Status: Processing</span></div></div>').join('')}
+function connect(){alert('Pi Wallet Connected! Balance: '+balance+' π')}
+</script>
+</body>
+</html>
