@@ -6,7 +6,7 @@
 <style>*{box-sizing:border-box;margin:0;padding:0;font-family:Arial}body{background:#0f0f1a;color:#fff;padding-bottom:85px}
 header{background:linear-gradient(135deg,#6a1b9a,#ffcc00);padding:20px 14px;text-align:center;border-radius:0 0 22px 22px}
 header h1{font-size:26px}header p{font-size:14px;margin-top:6px}
-.logo{width:90px;height:90px;border-radius:22px;border:3px solid #fff;object-fit:cover;background:#fff;box-shadow:0 4px 12px rgba(0,0,0,.4)}
+.logo{width:90px;height:90px;border-radius:22px;border:3px solid #fff;object-fit:cover;background:#fff}
 .hero{background:#1e1e2e;margin:12px;border-radius:16px;padding:16px;text-align:center}
 .btn{width:100%;padding:13px;border:0;border-radius:12px;font-weight:700;margin-top:9px;cursor:pointer;font-size:15px}
 .btn-pi{background:#ffcc00;color:#000}.btn-dark{background:#6a1b9a;color:#fff}.btn-out{background:transparent;color:#ffcc00;border:2px solid #ffcc00}
@@ -52,4 +52,49 @@ header h1{font-size:26px}header p{font-size:14px;margin-top:6px}
 <div class="box"><input type="password" id="adminPass" placeholder="Admin Password - Try: SMP2026"><button class="btn btn-dark" onclick="adminLogin()">Enter Admin Office</button></div>
 <div class="box" id="adminPanel" style="display:none"><h4>Dashboard</h4><p class="small">Total Orders: <b id="aOrders">0</b> • Vendors: <b id="aVendors">3</b> • Total Value: <b id="aRand">R0</b></p><div id="adminOrders"></div><div id="adminExtra"></div><button class="btn btn-out" onclick="document.getElementById('adminPanel').style.display='none'">Logout Admin</button></div></div></div>
 <div id="gamesPage" class="page"><div class="sec"><h3>🎮 Games & Tasks</h3><div class="grid">
-<div class="card"><h4>
+<div class="card"><h4>🎯 CiDi Game</h4><p style="color:#ddd;font-weight:400;font-size:12px">Play, Earn Points</p><button onclick="openGame('CiDi Game')">Play Now</button></div>
+<div class="card"><h4>🧩 Pi Puzzle</h4><p style="color:#ddd;font-weight:400;font-size:12px">Daily Puzzle - 10 Points</p><button onclick="openGame('Pi Puzzle')">Play</button></div>
+<div class="card"><h4>🏃 Pi Runner</h4><p style="color:#ddd;font-weight:400;font-size:12px">Run & Collect Pi Coins</p><button onclick="openGame('Pi Runner')">Play</button></div>
+<div class="card"><h4>❓ Pi Quiz</h4><p style="color:#ddd;font-weight:400;font-size:12px">Test Pi Knowledge</p><button onclick="openGame('Pi Quiz')">Play</button></div>
+</div><div class="box"><p>Your Game Points: <b id="gamePoints" style="color:#ffcc00">0</b> 🎮</p></div></div></div>
+<div id="payPage" class="page"><div class="sec"><h3>💳 Pay - Pi is KEY</h3>
+<div class="box"><h4>1. Pi Payment (Pi Browser) - MAIN</h4><input id="payAmt" type="number" placeholder="Amount in Pi - e.g 0.00002"><button class="btn btn-pi" onclick="payPi('',0)">Pay with Pi ✅ MAIN</button></div>
+<div class="box"><h4>2. OUSD - Alternative</h4><p class="small">1 OUSD = $1 = R17.50 Value</p><button class="btn btn-dark" onclick="alert('OUSD Testnet - Wallet: G-OUSD-SMP-TEST')">Use OUSD - Alternative</button></div>
+<div class="box"><h4>3. OpenPay - Alternative</h4><p class="small">OpenPay - Fast Pi Ecosystem Payment</p><button class="btn btn-dark" onclick="alert('OpenPay Testnet - Connect coming soon')">Use OpenPay - Alternative</button></div>
+<div class="box"><h4>4. Manual Pi Transfer</h4><p class="small">Send Pi manually to SMP Wallet:<br><b style="color:#ffcc00">G-SMP-BRAND-TEST-WALLET</b></p><button class="btn btn-out" onclick="navigator.clipboard.writeText('G-SMP-BRAND-TEST-WALLET');alert('Wallet Copied!')">Copy Wallet Address</button></div>
+<p class="small" style="padding:10px">⚠️ Rand is NOT a payment method. Rand only shows value.</p></div></div>
+<div id="walletPage" class="page"><div class="sec"><h3>👛 My Pi Wallet</h3>
+<div class="box"><p id="walletInfo">Not connected yet.</p><button class="btn btn-pi" onclick="loginPi()">Connect Pi Wallet</button><button class="btn btn-out" onclick="alert('Wallet: G-TEST-1234...')">Copy My Wallet</button></div>
+<div class="box"><h4>Balance</h4><p><b style="color:#ffcc00;font-size:22px">0.00 π</b><br><span class="small">≈ $0 at GCV</span></p></div></div></div>
+<div id="tokenPage" class="page"><div class="sec"><h3>🪙 Tokenization - Testnet</h3>
+<div class="box"><h4>Create Token</h4><input id="tName" placeholder="Asset Name - e.g My Shop"><input id="tValue" type="number" placeholder="Asset Value in RAND for clarity"><input id="tTotal" type="number" placeholder="Total Tokens - e.g 1000"><button class="btn btn-pi" onclick="createToken()">Create Token (Testnet)</button><p id="tokOut" class="small"></p></div>
+<div class="box"><h4>Live Tokens</h4><div id="tokenList"><p class="small">SMP Shop Token - 1000 tokens<br>SMP Farm Token - 500 tokens</p></div></div></div></div>
+<div id="mapPage" class="page"><div class="sec"><h3>🗺️ Vendor Map</h3>
+<div class="box"><button class="btn btn-pi" onclick="alert('Map: Showing vendors near Daveyton, Gauteng')">📍 Use My Location</button>
+<p style="margin-top:10px">📍 <b>SMP Brand</b> - Daveyton - Fashion - 0.5 km<br>📍 <b>Mama's Kitchen</b> - Daveyton - Food - 1.2 km<br>📍 <b>Tech Hub</b> - Benoni - Electronics - 5 km</p></div>
+<div class="box"><h4>Add Your Store to Map</h4><input placeholder="Store Name"><input placeholder="Location - e.g Daveyton"><button class="btn btn-dark" onclick="alert('Store added to Map Queue!')">Add My Store</button></div></div></div>
+<div id="gcvPage" class="page"><div class="sec"><h3>🧮 Pi Calculator - Super Perfect</h3>
+<div class="box"><p><b>Set Your Consensus Value</b></p>
+<label class="small">1 Pi = $ (Consensus)</label><input id="consVal" type="number" value="314159" oninput="calcGCV();calcGCV2();calcGCV3()">
+<label class="small">Rand Rate: 1 USD = R</label><input id="randRate" type="number" value="17.5" oninput="calcGCV();calcGCV2();calcGCV3()">
+<p class="small">Default: GCV $314,159 | R17.50.</p></div>
+<div class="box"><h4>1. Rand Value → Pi To Pay</h4>
+<label class="small">Rand Value (for clarity)</label><input id="gcvRand" type="number" placeholder="e.g 110" oninput="calcGCV()"><p>Pay: <b id="gcvOut" style="color:#ffcc00">0 Pi / 0 OUSD</b></p></div>
+<div class="box"><h4>2. Pi Amount → Rand Value</h4>
+<label class="small">Pi Amount (to Pay)</label><input id="gcvPi" type="number" placeholder="e.g 0.00002" oninput="calcGCV2()"><p>Value: <b id="gcvOut2" style="color:#ffcc00">$0 = R0 Value</b></p></div>
+<div class="box"><h4>3. OUSD → Pi / Rand</h4>
+<label class="small">OUSD Amount</label><input id="gcvOusd" type="number" placeholder="e.g 6.29" oninput="calcGCV3()"><p>Pay: <b id="gcvOut3" style="color:#ffcc00">0 Pi = R0 Value</b></p></div>
+<div class="box"><p class="small">⚠️ Rand = Value Only. You PAY with Pi / OUSD / OpenPay.</p><button class="btn btn-pi" onclick="showPage('shop')">Shop With This Price →</button></div>
+</div></div>
+<div id="ordersPage" class="page"><div class="sec"><h3>📦 My Orders</h3><div class="box" id="ordersBox"><p class="small">No orders yet.</p></div></div></div>
+<div id="jobsPage" class="page"><div class="sec"><h3>💼 Jobs Office Alone</h3>
+<div class="box"><h4>Managers Slot</h4><p class="small">Shop / Property Manager - Value R8,000-R15,000 pm</p><h4>Skilled Workers</h4><p class="small">Electrician, Plumber, Builder - Value R5,000-R12,000 pm</p><h4>General Workers</h4><p class="small">Cleaner, Packer - Value R3,500-R6,000 pm</p><h4>Drivers</h4><p class="small">Taxi, Delivery, Truck - Value R5,000-R10,000 pm</p><h4>Interview Form</h4><input id="jobName" placeholder="Full Name + Phone"><select id="jobType"><option>Managers Slot</option><option>Skilled Worker</option><option>General Worker</option><option>Driver</option></select><button class="btn btn-pi" onclick="applyJob()">Apply - Send to Admin</button></div></div></div>
+<div id="educationPage" class="page"><div class="sec"><h3>🎓 Education Office</h3>
+<div class="box"><h4>Business Education</h4><p class="small">How to run Spaza, How to be Vendor, How to price</p><h4>Pi Network Education</h4><p class="small">What is Pi? What is GCV? How to use Wallet safely? Never share passphrase!</p><button class="btn btn-pi" onclick="alert('Lesson 1: Pi is crypto mined on phone. GCV $314,159 is community value. Rand shows VALUE only, you PAY with Pi.')">Start Lesson 1 FREE</button></div></div></div>
+<div id="ideasPage" class="page"><div class="sec"><h3>💡 Ideas Request Spot</h3><div class="box"><textarea id="ideaText" placeholder="Your idea..."></textarea><button class="btn btn-pi" onclick="submitIdea()">Submit Idea to Info@smpbrand.co.za</button></div></div></div>
+<div id="enquiriesPage" class="page"><div class="sec"><h3>❓ Enquiries Spot</h3><div class="box"><input id="enqName" placeholder="Your Name"><input id="enqPhone" placeholder="Phone"><select id="enqType"><option>General</option><option>Sales</option><option>Support</option><option>Admin</option><option>Complaint</option><option>Review</option></select><textarea id="enqMsg" placeholder="What do you need?"></textarea><button class="btn btn-pi" onclick="submitEnq()">Send Enquiry</button></div></div></div>
+<div id="contactPage" class="page"><div class="sec"><h3>📧📱 Contact & Help</h3>
+<div class="box"><b>Info@smpbrand.co.za</b> - General<br><button class="btn btn-dark" onclick="window.location.href='mailto:Info@smpbrand.co.za'">Email Info</button></div>
+<div class="box"><b>Sales@smpbrand.co.za</b> - Buy / Sell<br>WhatsApp Chris: +27 68 055 8397<br><button class="btn btn-dark" onclick="window.location.href='mailto:Sales@smpbrand.co.za'">Email Sales</button><button class="btn btn-pi" onclick="window.open('https://wa.me/27680558397?text=Hi Chris')">WhatsApp Chris Sales</button></div>
+<div class="box"><b>Support@smpbrand.co.za</b> - Help / Complaints<br>WhatsApp Alice: +27 75 776 1266<br><button class="btn btn-dark" onclick="window.location.href='mailto:Support@smpbrand.co.za'">Email Support</button><button class="btn btn-pi" onclick="window.open('https://wa.me/27757761266?text=Hi Alice')">WhatsApp Alice Support</button></div>
+<div class="box"><b>Admin@smpbrand.co.za</b> -
