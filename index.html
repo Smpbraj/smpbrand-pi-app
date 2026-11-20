@@ -57,9 +57,14 @@ header h1{font-size:26px}header p{font-size:14px;margin-top:6px}
 <div class="box" style="background:#0f0f1a"><h4>🔐 Vendor 2FA - Double Check</h4><p class="small">Step 1: Login with Pi. Step 2: Enter 6-digit code sent to WhatsApp / Email. Testnet demo code is 123456.</p><input id="v2fa" placeholder="Enter 6-digit 2FA Code"><button class="btn btn-dark" onclick="verifyVendor2FA()">Verify 2FA ✅</button><p id="v2faOut" class="small"></p></div>
 <button class="btn btn-pi" onclick="applyVendor()">Submit Application ✅</button><p class="small">Admin: Admin@smpbrand.co.za | Moses +27605974789<br>Without certificate = ⏳ Pending. With certificate + 2FA = ✅ Verified Vendor (Admin checks).</p></div>
 <div class="box"><h4>Approved Vendors</h4><div id="vendorList"><p class="small">SMP Brand - Daveyton, SA - ✅ Verified<br>Mama's Kitchen - Food - ✅ Verified<br>Tech Hub - Electronics - ✅ Verified</p></div></div></div></div>
-<div id="adminPage" class="page"><div class="sec"><h3>🔐 Admin Office</h3>
-<div class="box"><p class="small">Admin access is via Pi Login only. No password stored in code.</p><button class="btn btn-dark" onclick="loginPi()">Login with Pi to Access Admin</button></div>
-<div class="box" id="adminPanel" style="display:none"><h4>Dashboard</h4><p class="small">Total Orders: <b id="aOrders">0</b> • Vendors: <b id="aVendors">3</b> • Total Value: <b id="aRand">R0</b></p><div id="adminOrders"></div><div id="adminExtra"></div><button class="btn btn-out" onclick="document.getElementById('adminPanel').style.display='none'">Logout Admin</button></div></div></div>
+<div id="adminPage" class="page"><div class="sec"><h3>🔐 Admin Office - 3 Admins Only</h3>
+<div class="box"><p class="small">Only Moses, Nelisiwe & Chris can access Admin. Enter your Admin details. Passwords given by Owner only.</p>
+<select id="adminName"><option>Moses</option><option>Nelisiwe</option><option>Chris</option></select>
+<input id="adminPhone" placeholder="Admin Phone - e.g +27605974789">
+<input type="password" id="adminPass2" placeholder="Admin Password - e.g Moses@1026">
+<button class="btn btn-dark" onclick="adminLoginSecure()">Enter Admin Office 🔐</button>
+<p id="adminMsg" class="small"></p></div>
+<div class="box" id="adminPanel" style="display:none"><h4>Dashboard - Welcome Admin</h4><p class="small">Total Orders: <b id="aOrders">0</b> • Vendors: <b id="aVendors">3</b> • Total Value: <b id="aRand">R0</b></p><div id="adminOrders"></div><div id="adminExtra"></div><button class="btn btn-out" onclick="document.getElementById('adminPanel').style.display='none'">Logout Admin</button></div></div></div>
 <div id="gamesPage" class="page"><div class="sec"><h3>🎮 Games & Tasks</h3><div class="grid">
 <div class="card"><h4>🎯 CiDi Game</h4><p style="color:#ddd;font-weight:400;font-size:12px">Play, Earn Points</p><button onclick="openGame('CiDi Game')">Play Now</button></div>
 <div class="card"><h4>🧩 Pi Puzzle</h4><p style="color:#ddd;font-weight:400;font-size:12px">Daily Puzzle - 10 Points</p><button onclick="openGame('Pi Puzzle')">Play</button></div>
@@ -151,7 +156,27 @@ function updateOrders(){let b=document.getElementById('ordersBox'); if(!b) retur
 function verifyVendor2FA(){let c=document.getElementById('v2fa').value; if(c==='123456'){vendor2FAOK=true; document.getElementById('v2faOut').innerText='✅ 2FA Verified - You are real operator. In Mainnet this code comes via WhatsApp / Email.'; alert('2FA Verified ✅');}else{document.getElementById('v2faOut').innerText='❌ Wrong code. Testnet demo code is 123456.';}}
 function applyVendor(){let n=document.getElementById('vName').value||'Pioneer';let cat=document.getElementById('vCat').value; let piU=document.getElementById('vPiUser').value||''; let hasCert=document.getElementById('vCert').files.length>0; if(!piU){alert('Please add Pi Username');return;} if(!hasCert){alert('Please upload Authenticated Certificate - CIPC / Permit / Trade Certificate. Status will be Pending.');} if(!vendor2FAOK){alert('Please verify 2FA first - Testnet code 123456');return;} window.location.href='mailto:Admin@smpbrand.co.za?subject=Vendor Application - '+encodeURIComponent(cat)+'&body='+encodeURIComponent('Name:'+n+' Pi:'+piU+' Cert:'+(hasCert?'Uploaded':'Missing')+' 2FA:Verified'); alert('Thank you '+n+'! Vendor application sent to Admin. Certificate + 2FA verified. Status: ⏳ Pending Admin Check'); document.getElementById('vendorList').innerHTML+='<br>⏳ '+n+' - '+cat+' - '+piU+' - Pending Verification';}
 function saveMyWallet(){let w=document.getElementById('myWalletAddr').value||''; let piU=document.getElementById('myPiUser2').value||''; if(!w && !piU){alert('Add Pi Wallet OR Pi Username - You can add later too');return;} if(w) localStorage.setItem('smp_my_wallet',w); document.getElementById('walletSaveOut').innerText='Saved ✅ Wallet: '+(w||'Add Later')+' | Pi: '+(piU||'Add Later')+' | site.smpbrand.co.za will connect once app is created in Pi Developer Portal.'; alert('Pi Wallet Saved - Add Later allowed');}
-function adminLogin(){alert('Please Login with Pi for Admin access.');}
+function adminLoginSecure(){
+  let name=document.getElementById('adminName').value;
+  let phone=document.getElementById('adminPhone').value.trim();
+  let pass=document.getElementById('adminPass2').value.trim();
+  let admins=[
+    {name:"Moses",phone:"+27605974789",pass:"Moses@1026"},
+    {name:"Nelisiwe",phone:"+27631868819",pass:"Nelisiwe@1026"},
+    {name:"Chris",phone:"+27680558397",pass:"Chris@1026"}
+  ];
+  let found=admins.find(a=>a.name===name && a.phone===phone && a.pass===pass);
+  if(found){
+    document.getElementById('adminPanel').style.display='block';
+    document.getElementById('adminMsg').innerText='Welcome Admin '+found.name+' ✅';
+    document.getElementById('adminExtra').innerHTML='<p class="small">Admin: '+found.name+' | Phone: '+found.phone+' | Access: Full</p><p class="small">Ideas: '+(ideas.join(' | ')||'None')+'</p>';
+    alert('Welcome Admin '+found.name+'!');
+  } else {
+    document.getElementById('adminPanel').style.display='none';
+    document.getElementById('adminMsg').innerText='❌ Access Denied - Only 3 SMP Admins allowed. Check Name, Phone & Password.';
+    alert('Access Denied - Only Moses, Nelisiwe & Chris can access Admin.');
+  }
+}
 function openGame(n){points+=10;document.getElementById('gamePoints').innerText=points;alert(n+' - You earned 10 points! Total: '+points);}
 function createToken(){let n=document.getElementById('tName').value||'My Asset';let v=parseFloat(document.getElementById('tValue').value)||10000;let pi=v/RATE/SMP_RATE; document.getElementById('tokenList').innerHTML+='<br>🪙 '+n+' - Value R'+v+' = Pay '+pi.toFixed(6)+' Pi'; document.getElementById('tokOut').innerText='Value R'+v+' = Pay '+pi.toFixed(6)+' Pi'; alert('Token Concept Created (Testnet)');}
 function calcGCV(){let v=parseFloat(document.getElementById('gcvRand').value)||0;let gcv=parseFloat(document.getElementById('consVal').value)||314159;let rate=parseFloat(document.getElementById('randRate').value)||17.5;document.getElementById('gcvOut').innerText=(v/rate/gcv).toFixed(6)+' Pi';}
