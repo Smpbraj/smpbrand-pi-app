@@ -173,8 +173,8 @@ function requireAdmin(){if(!adminPending){alert('Login as Admin first - Password
 function priceHTML(r){let pi=(r/RATE/SMP_RATE).toFixed(8); return `Value R${r.toLocaleString()}<br><span style="font-size:11px;color:#ffcc00">Pay ${pi} Pi</span>`}
 function render(){
 let c=document.getElementById('cats'); if(c) c.innerHTML=cats.map(x=>`<button class="${x===cur?'active':''}" onclick="filterCat('${x}')">${x}</button>`).join('');
-let g=document.getElementById('shopGrid'); if(g){g.innerHTML=''; let visible=products.filter(p=>!p.hidden && (cur==='All'||p.cat===cur)); visible.forEach(p=>{g.innerHTML+=`<div class="card"><img src="${p.img}"><h4>${p.name}</h4><p>${priceHTML(p.rand)}</p><button onclick="buyProduct('${p.name}',${p.rand})">Pay with Pi</button></div>`});}
-let feat=document.getElementById('featured'); if(feat) feat.innerHTML=products.filter(p=>!p.hidden).slice(0,4).map(p=>`<div class="card"><img src="${p.img}"><h4>${p.name}</h4><p>${priceHTML(p.rand)}</p><button onclick="buyProduct('${p.name}',${p.rand})">Pay with Pi</button></div>`).join('');
+let g=document.getElementById('shopGrid'); if(g){g.innerHTML=''; let visible=products.filter(p=>!p.hidden && (cur==='All'||p.cat===cur)); visible.forEach((p,idx)=>{let realIdx=products.indexOf(p); g.innerHTML+=`<div class="card"><img src="${p.img}"><h4>${p.name}</h4><p>${priceHTML(p.rand)}</p><button onclick="buyProductById(${realIdx})">Pay with Pi</button></div>`});}
+let feat=document.getElementById('featured'); if(feat) feat.innerHTML=products.filter(p=>!p.hidden).slice(0,4).map(p=>{let realIdx=products.indexOf(p); return `<div class="card"><img src="${p.img}"><h4>${p.name}</h4><p>${priceHTML(p.rand)}</p><button onclick="buyProductById(${realIdx})">Pay with Pi</button></div>`}).join('');
 let ol=document.getElementById('officeList'); if(ol) ol.innerHTML=offices.filter(o=>!o[4]).map(o=>{let realIdx=offices.indexOf(o); return `<div class="box"><h4>${o[0]}</h4><p class="small">${o[1]}</p><button class="btn btn-pi" onclick="openOffice(${realIdx})">Open ${o[0]} → Register</button></div>`}).join('');
 let mp=document.getElementById('markupProd'); if(mp) mp.innerHTML=products.filter(p=>!p.hidden).map(p=>`<option value="${products.indexOf(p)}">${p.name} - SMP R${p.rand}</option>`).join('');
 updateOrders(); updateBackoffice();
@@ -193,30 +193,39 @@ function submitOfficeForm(){let n=document.getElementById('ofName').value||'Pion
 function filterCat(x){cur=x;render();}
 function showPage(id,el){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));let pg=document.getElementById(id+'Page'); if(pg) pg.classList.add('active'); if(el){document.querySelectorAll('.tabs button').forEach(b=>b.classList.remove('active'));el.classList.add('active');}window.scrollTo(0,0);}
 function loginPi(){if(typeof Pi==='undefined'){alert('Open in Pi Browser to Login with Pi. Guest mode for now.');document.getElementById('userInfo').innerText='Guest Mode - Open in Pi Browser for full login';return;}try{Pi.init({version:"2.0",sandbox:true});Pi.authenticate(['username','payments'],function(a){user=a.user;document.getElementById('userInfo').innerText='Welcome @'+user.username+' ✅';document.getElementById('walletInfo').innerText='Connected as @'+user.username;});}catch(e){alert(e.message)}}
-function buyProduct(n,r){payPi(n,r)}
+function buyProductById(i){let p=products[i]; if(!p) return alert('Product not found'); buyProduct(p.name,p.rand);}
+function buyProduct(n,r){ alert("You clicked: "+n+" - R"+r+"\nOpening Pi Payment..."); payPi(n,r); }
 async function payPi(n,r){
-  let del=document.getElementById('delSel')?parseFloat(document.getElementById('delSel').value)||0:0;
-  if(r>=500) del=0;
-  let grand=r+del, pi=parseFloat((grand/RATE/SMP_RATE).toFixed(8));
-  if(!n){ pi=parseFloat(document.getElementById('payAmt').value||0); grand=Math.round(pi*RATE*SMP_RATE); }
-  if(!pi||pi<=0){ alert('Enter Pi amount first'); return; }
   try{
-    Pi.init({version:"2.0",sandbox:true});
-    await Pi.authenticate(['username','payments'],()=>{});
-    await Pi.createPayment({amount:pi,memo:"SMP - "+(n||"Pi Payment")+" - R"+grand,metadata:{product:n||"Pi Payment",priceZAR:grand}},{
-      onReadyForServerApproval:(pid)=>{ console.log("Approve:",pid); },
-      onReadyForServerCompletion:(pid,txid)=>{
-        orders.push({name:n||"Pi Payment",rand:r,delivery:del,total:grand,pi:pi,date:new Date().toLocaleString(),status:'Paid - Pi HELD by SMP',stage:'paid'});
-        saveAll(); saveLog('New order: '+(n||"Pi Payment")+' R'+grand+' - Pi HELD'); updateOrders();
-        alert('✅ Paid! '+(n||"Pi Payment")+'\nValue R'+grand+'\nPaid '+pi+' Pi\nTX: '+txid); showPage('orders');
-      },
-      onCancel:()=>{ alert('Payment cancelled'); },
-      onError:(e)=>{ alert('Pi Error: '+e); }
-    });
-  }catch(e){
+    let delSel=document.getElementById('delSel');
+    let del=delSel?parseFloat(delSel.value)||0:0;
+    if(r>=500) del=0;
+    let grand=r+del;
+    let pi=parseFloat((grand/RATE/SMP_RATE).toFixed(8));
+    if(!n){
+      let manual=document.getElementById('payAmt');
+      pi=parseFloat(manual?manual.value||0:0);
+      if(!pi||pi<=0){ alert('Enter Pi amount first - e.g 0.00006353'); return; }
+      grand=Math.round(pi*RATE*SMP_RATE);
+    }
     orders.push({name:n||"Pi Payment",rand:r,delivery:del,total:grand,pi:pi,date:new Date().toLocaleString(),status:'Paid - Pi HELD by SMP',stage:'paid'});
     saveAll(); saveLog('New order: '+(n||"Pi Payment")+' R'+grand+' - Pi HELD'); updateOrders();
-    alert('Order (Demo - Open in Pi Browser for real Pi): '+(n||"Pi Payment")+'\nValue R'+grand+'\nPAY: '+pi+' Pi'); showPage('orders');
+    if(typeof Pi==='undefined'){
+      alert('✅ Order Created!\n'+(n||"Pi Payment")+'\nValue R'+grand+'\nPAY: '+pi+' Pi\n\nNOTE: Open in Pi Browser to pay REAL Test-Pi.\nIn Chrome it saves as demo order only.');
+      showPage('orders'); return;
+    }
+    Pi.init({version:"2.0",sandbox:true});
+    await Pi.authenticate(['username','payments'],()=>{});
+    alert('Pi Wallet Opening...\nPay '+pi+' Pi for '+(n||"Pi Payment"));
+    await Pi.createPayment({amount:pi,memo:"SMP - "+(n||"Pi Payment")+" - R"+grand,metadata:{product:n||"Pi Payment",priceZAR:grand}},{
+      onReadyForServerApproval:(pid)=>{ alert('Pi Payment Created: '+pid+'\nTestnet Demo - Order already saved in Orders.'); },
+      onReadyForServerCompletion:(pid,txid)=>{ alert('✅ Paid! TX: '+txid); showPage('orders'); },
+      onCancel:()=>{ alert('Payment cancelled - Order still saved in Orders'); },
+      onError:(e)=>{ alert('Pi Error (order still saved): '+e); }
+    });
+  }catch(e){
+    alert('Button Error: '+e.message+'\nCheck Orders page - order may still be saved.');
+    showPage('orders');
   }
 }
 function updateOrders(){
