@@ -19,10 +19,11 @@ header h1{font-size:26px}header p{font-size:14px;margin-top:6px}
 .small{font-size:12px;color:#aaa;line-height:1.5}.ann{background:#ffcc00;color:#000;padding:8px;text-align:center;font-weight:700;font-size:12px;margin:10px 12px;border-radius:10px}
 .row{border-bottom:1px solid #333;padding:8px 0}
 </style></head><body>
-<header><h1>👋 Welcome Pioneer<br>SMP Brand Super App</h1><p>Shop • Sell • Play • Pay • Tokenize • Map • Micro Pi<br>All in One Place - Testnet Ready | Johannesburg, Gauteng, South Africa</p><span class="badge">✦ PI TESTNET • MICRO PI PAYMENTS ✦</span></header>
-<div class="ann">📢 Burial + Stokvel + Jobs + Farming NOW LIVE! | Value in Rand, Pay in Micro Pi | Serving Gauteng, South Africa</div>
+<header><h1>👋 Welcome Pioneer<br>SMP Brand Super App</h1><p>Shop • Sell • Play • Pay • Map • Jobs • Education<br>All in One Place - Testnet | Johannesburg, Gauteng, South Africa</p><span class="badge">✦ PI TESTNET • PAY WITH PI ✦</span></header>
+<div class="ann">📢 Shop + Vendor + Jobs + Farming NOW LIVE! | Pay with Pi | Serving Gauteng, South Africa</div>
+
 <div id="homePage" class="page active">
-<div class="hero"><h2 style="color:#ffcc00">Your Pi Life, In One App</h2><p class="small">Login with Pi, shop basics, become vendor, play games, calculate Micro Pi, tokenize assets.<br>Rand shows VALUE for clarity ONLY. You PAY with Pi ONLY.<br>Head Office: Johannesburg, Gauteng, South Africa</p>
+<div class="hero"><h2 style="color:#ffcc00">Your Pi Life, In One App</h2><p class="small">Login with Pi, shop basics, become vendor, play games.<br>Head Office: Johannesburg, Gauteng, South Africa</p>
 <button class="btn btn-pi" onclick="loginPi()">🔐 Login with Pi</button>
 <button class="btn btn-out" onclick="showPage('shop')">🛍️ Shop Basics Now →</button>
 <p id="userInfo" style="color:#ffcc00;font-size:13px;margin-top:8px"></p></div>
@@ -31,98 +32,95 @@ header h1{font-size:26px}header p{font-size:14px;margin-top:6px}
 <div class="card" onclick="showPage('offices')"><h4>🏢 All Offices</h4><p style="color:#ddd;font-weight:400;font-size:12px">Gauteng, SA</p></div>
 <div class="card" onclick="showPage('vendor')"><h4>🏪 Become Vendor</h4><p style="color:#ddd;font-weight:400;font-size:12px">Sell in App</p></div>
 <div class="card" onclick="showPage('games')"><h4>🎮 Games</h4><p style="color:#ddd;font-weight:400;font-size:12px">CiDi & More</p></div>
-<div class="card" onclick="showPage('gcv')"><h4>🧮 Micro Pi Calculator</h4><p style="color:#ddd;font-weight:400;font-size:12px">For Learning Only</p></div>
 <div class="card" onclick="showPage('jobs')"><h4>💼 Jobs</h4><p style="color:#ddd;font-weight:400;font-size:12px">Managers / Drivers</p></div>
 <div class="card" onclick="showPage('education')"><h4>🎓 Education</h4><p style="color:#ddd;font-weight:400;font-size:12px">Business + Pi</p></div>
+<div class="card" onclick="showPage('map')"><h4>🗺️ Map</h4><p style="color:#ddd;font-weight:400;font-size:12px">Vendors Near You</p></div>
 <div class="card" onclick="showPage('contact')"><h4>📧 Contact</h4><p style="color:#ddd;font-weight:400;font-size:12px">Emails + WhatsApp</p></div>
 </div></div>
 <div class="sec"><h3>🔥 Featured Basics</h3><div class="grid" id="featured"></div></div>
 </div>
-<div id="shopPage" class="page"><div class="sec"><h3>Shop - All Basics & More</h3><p class="small">Value in Rand for clarity. Pay with Pi ONLY. Prices controlled by Admin Backoffice LIVE.</p>
+
+<div id="shopPage" class="page"><div class="sec"><h3>Shop - All Basics</h3><p class="small">Prices controlled by Admin Backoffice LIVE. Pay with Pi at checkout.</p>
 <div class="cat" id="cats"></div><div class="grid" id="shopGrid" style="margin-top:10px"></div>
-<div class="box"><h4>🚚 Delivery - Pay in Micro Pi - Gauteng, South Africa</h4><select id="delSel"><option value="0">PICKUP FREE - SMP Johannesburg, Gauteng</option><option value="50">LOCAL Johannesburg - Value R50</option><option value="100">LOCAL Benoni / Springs - Value R100</option><option value="59">PUDO XS 2kg - Value R59</option><option value="69">PUDO S 5kg - Value R69</option><option value="89">PUDO M 10kg - Value R89</option><option value="119">PUDO L 20kg - Value R119</option><option value="60">PAXI PEP 5kg - Value R60</option><option value="75">Pargo Pickup - Value R75</option><option value="49">Courier Gauteng - Value R49</option><option value="120">Courier Overnight - Value R120</option><option value="150">Courier National - South Africa - Value R150</option></select><p class="small">FREE over R500 value local. Delivery paid in Micro Pi.</p></div>
+<div class="box"><h4>🚚 Delivery - Gauteng, South Africa</h4><select id="delSel"><option value="0">PICKUP FREE - SMP Johannesburg</option><option value="50">LOCAL Johannesburg - R50</option><option value="100">LOCAL Benoni / Springs - R100</option><option value="59">PUDO XS 2kg - R59</option><option value="69">PUDO S 5kg - R69</option><option value="89">PUDO M 10kg - R89</option><option value="119">PUDO L 20kg - R119</option><option value="60">PAXI PEP 5kg - R60</option><option value="75">Pargo Pickup - R75</option><option value="49">Courier Gauteng - R49</option><option value="120">Courier Overnight - R120</option><option value="150">Courier National - R150</option></select><p class="small">FREE over R500 local.</p></div>
 </div></div>
-<div id="officesPage" class="page"><div class="sec"><h3>🏢 All Offices - Gauteng, South Africa</h3><p class="small">Offices controlled by Admin - if Admin turns OFF an office, it disappears here LIVE.</p><div id="officeList"></div></div></div>
+
+<div id="officesPage" class="page"><div class="sec"><h3>🏢 All Offices - Gauteng</h3><p class="small">Offices controlled by Admin - if Admin turns OFF an office, it disappears here LIVE.</p><div id="officeList"></div></div></div>
+
 <div id="officeFormPage" class="page"><div class="sec"><h3 id="officeFormTitle">🏢 Office Registration</h3>
-<div class="box"><p class="small" id="officeFormDesc">Register for this office. Provide your Digital Pioneer Credentials.</p>
-<input id="ofName" placeholder="Full Name"><input id="ofPiUser" placeholder="Pi Username"><input id="ofPhone" placeholder="Phone / WhatsApp"><input id="ofID" placeholder="ID - Last 4 digits only"><input id="ofArea" placeholder="Your Area - e.g Johannesburg, Gauteng"><div id="officeExtra"></div>
-<label class="small">Digital Approved Credentials - Upload ID / KYC Screenshot (name + verified tick only)</label><input type="file" id="ofCred" accept="image/*,.pdf">
-<label class="small">Office Proof / Certificate if needed</label><input type="file" id="ofCert" accept="image/*,.pdf">
+<div class="box"><p class="small" id="officeFormDesc">Register for this office with your Pi Login.</p>
+<input id="ofName" placeholder="Full Name"><input id="ofPiUser" placeholder="Pi Username"><input id="ofPhone" placeholder="Phone / WhatsApp"><input id="ofArea" placeholder="Your Area - e.g Johannesburg, Gauteng"><div id="officeExtra"></div>
 <textarea id="ofNotes" placeholder="Notes for this office..."></textarea>
 <button class="btn btn-pi" onclick="submitOfficeForm()">Submit Office Registration ✅</button>
 <button class="btn btn-out" onclick="showPage('offices')">← Back to Offices</button><p id="ofOut" class="small"></p></div></div></div>
-<div id="vendorPage" class="page"><div class="sec"><h3>🏪 Vendor Application - Trusted Vendor</h3>
-<div class="box"><p>SMP Main Site = Supplier. Vendor sells ONLY SMP products + Markup. Certificate Required. Serving Gauteng, South Africa.</p>
-<input id="vName" placeholder="Your Name"><input id="vBiz" placeholder="Business Name"><input id="vPhone" placeholder="Phone / WhatsApp"><input id="vPiUser" placeholder="Pi Username"><input id="vWallet" placeholder="Pi Wallet Address - Optional, Add Later"><input id="vID" placeholder="ID - Last 4 digits only"><input id="vArea" placeholder="Your Area - e.g Johannesburg, Gauteng, South Africa"><select id="vCat"><option>Food & Groceries</option><option>Property Manager</option><option>Land Seller</option><option>Car Dealer</option><option>Farmer</option><option>Building / Hardware</option><option>Mechanic Workshop</option><option>Embroidery / Tailor</option><option>Hotel / Restaurant</option><option>Fashion</option><option>Beauty</option><option>Electronics</option><option>Home</option><option>Health</option><option>Digital</option><option>Services</option><option>Cars</option><option>Property</option></select><textarea id="vDesc" placeholder="What do you sell? + Delivery Price"></textarea>
-<label class="small">✅ Authenticated Certificate - CIPC / Permit / Trade Certificate / Proof of Business (Required)</label><input type="file" id="vCert" accept="image/*,.pdf">
-<label class="small">Digital Credentials - ID / Pi KYC Screenshot</label><input type="file" id="vCred" accept="image/*,.pdf">
-<button class="btn btn-pi" onclick="applyVendor()">Submit Application ✅</button><p class="small">Admin checks certificate. Login with Pi first to verify you are real Pioneer.</p></div>
-<div class="box"><h4>🏪 Vendor Markup - Area Fair Pricing - NEVER Below SMP</h4><p class="small">SMP = Supplier. You CANNOT sell lower than SMP price. Add markup for YOUR area only.</p><select id="markupProd"></select><select id="markupArea"><option>Johannesburg - Local</option><option>Benoni - Near</option><option>Springs - Near</option><option>Pretoria - Near</option><option>Johannesburg - Far</option><option>Durban - National</option><option>Cape Town - National</option><option>Other Area - South Africa</option></select><input id="markupAmt" type="number" placeholder="Your Markup in Rand"><button class="btn btn-dark" onclick="addVendorMarkup()">Add My Markup Product ✅</button><p id="markupOut" class="small"></p></div>
-<div class="box"><h4>💰 Vendor Withdraw - Escrow</h4><p class="small">Withdraw is LOCKED until Pioneer clicks ✅ I Received. Admin releases after Received.</p><button id="vendorWithdrawBtn" class="btn btn-grey" onclick="vendorWithdraw()">🔒 Withdraw Locked - Waiting for Pioneer Received</button><p id="withdrawOut" class="small"></p></div>
-<div class="box"><h4>Approved Vendors</h4><div id="vendorList"><p class="small">SMP Brand - Johannesburg, Gauteng, South Africa - ✅ Verified<br>Mama's Kitchen - Food - Johannesburg, Gauteng - ✅ Verified<br>Tech Hub - Electronics - Benoni, Gauteng - ✅ Verified</p></div></div></div></div>
+
+<div id="vendorPage" class="page"><div class="sec"><h3>🏪 Vendor Application</h3>
+<div class="box"><p>SMP Main Site = Supplier. Vendor sells ONLY SMP products + Markup. Serving Gauteng, South Africa.</p>
+<input id="vName" placeholder="Your Name"><input id="vBiz" placeholder="Business Name"><input id="vPhone" placeholder="Phone / WhatsApp"><input id="vPiUser" placeholder="Pi Username"><input id="vArea" placeholder="Your Area - e.g Johannesburg, Gauteng"><select id="vCat"><option>Food & Groceries</option><option>Property Manager</option><option>Land Seller</option><option>Car Dealer</option><option>Farmer</option><option>Building / Hardware</option><option>Mechanic Workshop</option><option>Embroidery / Tailor</option><option>Hotel / Restaurant</option><option>Fashion</option><option>Beauty</option><option>Electronics</option><option>Home</option><option>Health</option><option>Digital</option><option>Services</option><option>Cars</option><option>Property</option></select><textarea id="vDesc" placeholder="What do you sell? + Delivery Price"></textarea>
+<button class="btn btn-pi" onclick="applyVendor()">Submit Application ✅</button><p class="small">Login with Pi first to verify you are a real Pioneer.</p></div>
+<div class="box"><h4>🏪 Vendor Markup - Area Fair Pricing</h4><p class="small">SMP = Supplier. You CANNOT sell lower than SMP price.</p><select id="markupProd"></select><select id="markupArea"><option>Johannesburg - Local</option><option>Benoni - Near</option><option>Springs - Near</option><option>Pretoria - Near</option><option>Johannesburg - Far</option><option>Durban - National</option><option>Cape Town - National</option><option>Other Area - South Africa</option></select><input id="markupAmt" type="number" placeholder="Your Markup in Rand"><button class="btn btn-dark" onclick="addVendorMarkup()">Add My Markup Product ✅</button><p id="markupOut" class="small"></p></div>
+<div class="box"><h4>Approved Vendors</h4><div id="vendorList"><p class="small">SMP Brand - Johannesburg - ✅ Verified<br>Mama's Kitchen - Food - Johannesburg - ✅ Verified<br>Tech Hub - Electronics - Benoni - ✅ Verified</p></div></div></div></div>
+
 <div id="adminPage" class="page"><div class="sec"><h3>🔐 Admin Office</h3>
-<div class="box"><p class="small">Authorized Admins Only. Login with Pi - No password in code for safety.</p>
-<button class="btn btn-pi" onclick="loginPiAdmin()">🔐 Login with Pi as Admin</button>
-<p id="adminMsg" class="small"></p></div>
-<div class="box" id="adminPanel" style="display:none"><h4>Dashboard - Welcome Admin | BACKOFFICE</h4><p class="small">Total Orders: <b id="aOrders">0</b> • Vendors: <b id="aVendors">3</b> • Total Value: <b id="aRand">R0</b> • Members: <b id="aMembers">0</b> • Held Pi: <b id="aHeld">0 Pi</b> • Released Pi: <b id="aReleased">0 Pi</b></p>
+<div class="box"><p class="small">Authorized Admins Only. Login with Pi.</p>
+<button class="btn btn-pi" onclick="loginPiAdmin()">🔐 Login with Pi as Admin</button><p id="adminMsg" class="small"></p></div>
+<div class="box" id="adminPanel" style="display:none"><h4>Dashboard - Welcome Admin | BACKOFFICE</h4><p class="small">Orders: <b id="aOrders">0</b> • Vendors: <b id="aVendors">3</b> • Members: <b id="aMembers">0</b></p>
 <button class="btn btn-pi" onclick="showPage('shop')">👀 View Store as Pioneer</button>
 <button class="btn btn-dark" onclick="refreshAll()">🔄 Refresh All Data</button>
-<div class="box" style="background:#0f0f1a"><h4>🛍️ BACKOFFICE - Control Shop</h4><div id="boProductList"></div><input id="boNewName" placeholder="New Product Name"><input id="boNewPrice" type="number" placeholder="New Product Price"><button class="btn btn-dark" onclick="adminAddProduct()">Add New Product ✅</button><p id="boOut" class="small"></p></div>
+<div class="box" style="background:#0f0f1a"><h4>🛍️ BACKOFFICE - Control Shop</h4><div id="boProductList"></div><input id="boNewName" placeholder="New Product Name"><input id="boNewPrice" type="number" placeholder="New Product Price in Rand"><button class="btn btn-dark" onclick="adminAddProduct()">Add New Product ✅</button><p id="boOut" class="small"></p></div>
 <div class="box" style="background:#0f0f1a"><h4>🏢 BACKOFFICE - Control Offices</h4><div id="boOfficeList"></div></div>
-<div class="box" style="background:#0f0f1a"><h4>📦 BACKOFFICE - Orders & Payments - Escrow</h4><div id="adminOrders"></div></div>
+<div class="box" style="background:#0f0f1a"><h4>📦 BACKOFFICE - Orders</h4><div id="adminOrders"></div></div>
 <div class="box" style="background:#0f0f1a"><h4>👥 BACKOFFICE - Members</h4><div id="adminMembers"></div></div>
 <div class="box" style="background:#0f0f1a"><h4>🏪 BACKOFFICE - Vendors</h4><div id="adminVendors"></div></div>
 <div class="box" style="background:#0f0f1a"><h4>📋 Admin Action Log</h4><div id="adminLog"></div><button class="btn btn-out" onclick="clearAdminLog()">Clear Log</button></div>
 <div id="adminExtra"></div><button class="btn btn-out" onclick="adminLogout()">Logout Admin</button></div></div></div>
+
 <div id="gamesPage" class="page"><div class="sec"><h3>🎮 Games & Tasks</h3><div class="grid">
 <div class="card"><h4>🎯 CiDi Game</h4><p style="color:#ddd;font-weight:400;font-size:12px">Play, Earn Points</p><button onclick="openGame('CiDi Game')">Play Now</button></div>
 <div class="card"><h4>🧩 Pi Puzzle</h4><p style="color:#ddd;font-weight:400;font-size:12px">Daily Puzzle - 10 Points</p><button onclick="openGame('Pi Puzzle')">Play</button></div>
 <div class="card"><h4>🏃 Pi Runner</h4><p style="color:#ddd;font-weight:400;font-size:12px">Run & Collect Pi Coins</p><button onclick="openGame('Pi Runner')">Play</button></div>
 <div class="card"><h4>❓ Pi Quiz</h4><p style="color:#ddd;font-weight:400;font-size:12px">Test Pi Knowledge</p><button onclick="openGame('Pi Quiz')">Play</button></div>
 </div><div class="box"><p>Your Game Points: <b id="gamePoints" style="color:#ffcc00">0</b> 🎮</p></div></div></div>
+
 <div id="payPage" class="page"><div class="sec"><h3>💳 Pay - Pi is KEY</h3>
-<div class="box"><h4>1. Pi Payment (Pi Browser) - MAIN</h4><input id="payAmt" type="number" placeholder="Amount in Pi - e.g 0.00002"><button class="btn btn-pi" onclick="payPi('',0)">Pay with Pi ✅ MAIN</button></div>
-<div class="box"><h4>2. Manual Pi Transfer</h4><p class="small">Send Pi manually via your Pi Wallet in Pi Browser. No wallet address is stored in this app - use Pi SDK checkout.</p><button class="btn btn-out" onclick="showPage('shop')">Back to Shop</button></div>
-<p class="small" style="padding:10px">⚠️ Rand is NOT a payment method. Rand only shows value.</p></div></div>
+<div class="box"><h4>Pi Payment (Pi Browser) - MAIN</h4><input id="payAmt" type="number" placeholder="Amount in Pi - e.g 0.1"><button class="btn btn-pi" onclick="payPi('',0)">Pay with Pi ✅ MAIN</button></div>
+<div class="box"><p class="small">Pay with Pi SDK checkout in Pi Browser. No wallet address needed.</p><button class="btn btn-out" onclick="showPage('shop')">Back to Shop</button></div></div></div>
+
 <div id="walletPage" class="page"><div class="sec"><h3>👛 My Pi Wallet</h3>
-<div class="box"><p id="walletInfo">Not connected yet.</p><button class="btn btn-pi" onclick="loginPi()">Connect Pi Wallet</button></div>
-<div class="box"><h4>Balance</h4><p><b style="color:#ffcc00;font-size:22px">0.00 π</b><br><span class="small">Balance shown in Pi Browser</span></p></div>
-<div class="box"><h4>Add Pi Wallet - Add Later Allowed</h4><p class="small">site.smpbrand.co.za will connect to Pi Wallet once app is created in Pi Network Developer Portal.</p><input id="myWalletAddr" placeholder="Pi Wallet Address - Add Later OK"><input id="myPiUser2" placeholder="Pi Username"><button class="btn btn-pi" onclick="saveMyWallet()">Save My Pi Wallet ✅</button><p id="walletSaveOut" class="small"></p></div></div></div>
-<div id="tokenPage" class="page"><div class="sec"><h3>🪙 Tokenization - Testnet Learning</h3>
-<div class="box"><h4>Create Token Concept</h4><input id="tName" placeholder="Asset Name - e.g My Shop"><input id="tValue" type="number" placeholder="Asset Value in RAND for clarity"><input id="tTotal" type="number" placeholder="Total Tokens - e.g 1000"><button class="btn btn-pi" onclick="createToken()">Create Token Concept (Testnet)</button><p id="tokOut" class="small"></p></div>
-<div class="box"><h4>Live Token Concepts</h4><div id="tokenList"><p class="small">SMP Shop Token - 1000 tokens<br>SMP Farm Token - 500 tokens</p></div></div></div></div>
-<div id="mapPage" class="page"><div class="sec"><h3>🗺️ Vendor Map - Gauteng, South Africa</h3>
-<div class="box"><button class="btn btn-pi" onclick="alert('Map: Showing vendors near Johannesburg, Gauteng, South Africa')">📍 Use My Location</button>
-<p style="margin-top:10px">📍 <b>SMP Brand</b> - Johannesburg, Gauteng - Fashion - 0.5 km<br>📍 <b>Mama's Kitchen</b> - Johannesburg, Gauteng - Food - 1.2 km<br>📍 <b>Tech Hub</b> - Benoni, Gauteng - Electronics - 5 km</p></div>
+<div class="box"><p id="walletInfo">Not connected yet.</p><button class="btn btn-pi" onclick="loginPi()">Connect with Pi Login</button></div>
+<div class="box"><p class="small">Balance is shown inside Pi Wallet in Pi Browser.</p></div></div></div>
+
+<div id="mapPage" class="page"><div class="sec"><h3>🗺️ Vendor Map - Gauteng</h3>
+<div class="box"><button class="btn btn-pi" onclick="alert('Map: Showing vendors near Johannesburg, Gauteng')">📍 Use My Location</button>
+<p style="margin-top:10px">📍 <b>SMP Brand</b> - Johannesburg - Fashion - 0.5 km<br>📍 <b>Mama's Kitchen</b> - Johannesburg - Food - 1.2 km<br>📍 <b>Tech Hub</b> - Benoni - Electronics - 5 km</p></div>
 <div class="box"><h4>Add Your Store to Map</h4><input placeholder="Store Name"><input placeholder="Location - e.g Johannesburg, Gauteng"><button class="btn btn-dark" onclick="alert('Store added to Map Queue!')">Add My Store</button></div></div></div>
-<div id="gcvPage" class="page"><div class="sec"><h3>🧮 Micro Pi Calculator - For Learning Only</h3>
-<div class="box"><p><b>SMP Micro Pi Rate - Seller Sets Final Price</b></p>
-<label class="small">SMP Micro Pi Rate (for learning)</label><input id="consVal" type="number" value="314159" oninput="calcGCV();calcGCV2()">
-<label class="small">Rand Rate: 1 USD = R</label><input id="randRate" type="number" value="17.536" oninput="calcGCV();calcGCV2()">
-<p class="small">This is a community learning tool, not an official Pi price. Seller sets final Pi price.</p></div>
-<div class="box"><h4>1. Rand Value → Pi To Pay</h4><label class="small">Rand Value (for clarity)</label><input id="gcvRand" type="number" placeholder="e.g 110" oninput="calcGCV()"><p>Pay: <b id="gcvOut" style="color:#ffcc00">0 Pi</b></p></div>
-<div class="box"><h4>2. Pi Amount → Rand Value</h4><label class="small">Pi Amount (to Pay)</label><input id="gcvPi" type="number" placeholder="e.g 0.00002" oninput="calcGCV2()"><p>Value: <b id="gcvOut2" style="color:#ffcc00">$0 = R0 Value</b></p></div>
-<div class="box"><p class="small">⚠️ Rand = Value Only. You PAY with Pi.</p><button class="btn btn-pi" onclick="showPage('shop')">Shop With This Price →</button></div>
-</div></div>
-<div id="ordersPage" class="page"><div class="sec"><h3>📦 My Orders - Escrow</h3><p class="small">Pi is HELD by SMP until you click ✅ I Received. Only then Vendor can withdraw.</p><div class="box" id="ordersBox"><p class="small">No orders yet.</p></div></div></div>
-<div id="jobsPage" class="page"><div class="sec"><h3>💼 Jobs Office - Gauteng, South Africa</h3>
-<div class="box"><h4>Managers Slot</h4><p class="small">Shop / Property Manager - Value R8,000-R15,000 pm - Johannesburg, Gauteng</p><h4>Skilled Workers</h4><p class="small">Electrician, Plumber, Builder - Value R5,000-R12,000 pm</p><h4>General Workers</h4><p class="small">Cleaner, Packer - Value R3,500-R6,000 pm</p><h4>Drivers</h4><p class="small">Taxi, Delivery, Truck - Value R5,000-R10,000 pm - Gauteng, South Africa</p><h4>Interview Form + Digital Credentials</h4><input id="jobName" placeholder="Full Name + Phone"><input id="jobPiUser" placeholder="Pi Username"><input id="jobID" placeholder="ID - Last 4 digits only"><input id="jobArea" placeholder="Your Area - e.g Johannesburg, Gauteng"><select id="jobType"><option>Managers Slot</option><option>Skilled Worker</option><option>General Worker</option><option>Driver</option></select><label class="small">Upload CV / Certificate / ID</label><input type="file" id="jobCert" accept="image/*,.pdf"><button class="btn btn-pi" onclick="applyJob()">Apply - Send to Admin</button></div></div></div>
+
+<div id="ordersPage" class="page"><div class="sec"><h3>📦 My Orders</h3><p class="small">Your orders after Pi payment.</p><div class="box" id="ordersBox"><p class="small">No orders yet.</p></div></div></div>
+
+<div id="jobsPage" class="page"><div class="sec"><h3>💼 Jobs Office - Gauteng</h3>
+<div class="box"><h4>Managers Slot</h4><p class="small">Shop / Property Manager - R8,000-R15,000 pm - Johannesburg</p><h4>Skilled Workers</h4><p class="small">Electrician, Plumber, Builder - R5,000-R12,000 pm</p><h4>General Workers</h4><p class="small">Cleaner, Packer - R3,500-R6,000 pm</p><h4>Drivers</h4><p class="small">Taxi, Delivery, Truck - R5,000-R10,000 pm - Gauteng</p><h4>Apply</h4><input id="jobName" placeholder="Full Name + Phone"><input id="jobPiUser" placeholder="Pi Username"><input id="jobArea" placeholder="Your Area - e.g Johannesburg, Gauteng"><select id="jobType"><option>Managers Slot</option><option>Skilled Worker</option><option>General Worker</option><option>Driver</option></select><button class="btn btn-pi" onclick="applyJob()">Apply - Send to Admin</button></div></div></div>
+
 <div id="educationPage" class="page"><div class="sec"><h3>🎓 Education Office</h3>
-<div class="box"><h4>Business Education</h4><p class="small">How to run Spaza, How to be Vendor, How to price in Micro Pi</p><h4>Pi Network Education</h4><p class="small">What is Pi? What is Micro Pi? How to use Wallet safely? Never share passphrase!</p><button class="btn btn-pi" onclick="alert('Lesson 1: Pi is crypto mined on phone. SMP uses Micro Pi - Rand shows VALUE only, you PAY with Pi.')">Start Lesson 1 FREE</button></div></div></div>
+<div class="box"><h4>Business Education</h4><p class="small">How to run Spaza, How to be Vendor, How to price in Pi</p><h4>Pi Network Education</h4><p class="small">What is Pi? How to use Wallet safely? Never share passphrase!</p><button class="btn btn-pi" onclick="alert('Lesson 1: Pi is crypto mined on phone. SMP - you PAY with Pi.')">Start Lesson 1 FREE</button></div></div></div>
+
 <div id="ideasPage" class="page"><div class="sec"><h3>💡 Ideas Request Spot</h3><div class="box"><textarea id="ideaText" placeholder="Your idea..."></textarea><button class="btn btn-pi" onclick="submitIdea()">Submit Idea to Info@smpbrand.co.za</button></div></div></div>
+
 <div id="enquiriesPage" class="page"><div class="sec"><h3>❓ Enquiries Spot</h3><div class="box"><input id="enqName" placeholder="Your Name"><input id="enqPhone" placeholder="Phone"><input id="enqPiUser" placeholder="Pi Username"><select id="enqType"><option>General</option><option>Sales</option><option>Support</option><option>Admin</option><option>Complaint</option><option>Review</option></select><textarea id="enqMsg" placeholder="What do you need?"></textarea><button class="btn btn-pi" onclick="submitEnq()">Send Enquiry</button></div></div></div>
-<div id="contactPage" class="page"><div class="sec"><h3>📧📱 Contact & Help - Johannesburg, Gauteng, South Africa</h3>
+
+<div id="contactPage" class="page"><div class="sec"><h3>📧📱 Contact & Help - Johannesburg, Gauteng</h3>
 <div class="box"><b>Info@smpbrand.co.za</b> - General<br><button class="btn btn-dark" onclick="window.location.href='mailto:Info@smpbrand.co.za'">Email Info</button></div>
 <div class="box"><b>Sales@smpbrand.co.za</b> - Buy / Sell<br>WhatsApp Chris: +27 68 055 8397<br><button class="btn btn-dark" onclick="window.location.href='mailto:Sales@smpbrand.co.za'">Email Sales</button><button class="btn btn-pi" onclick="window.open('https://wa.me/27680558397?text=Hi Chris')">WhatsApp Chris Sales</button></div>
 <div class="box"><b>Support@smpbrand.co.za</b> - Help / Complaints<br>WhatsApp Alice: +27 75 776 1266<br><button class="btn btn-dark" onclick="window.location.href='mailto:Support@smpbrand.co.za'">Email Support</button><button class="btn btn-pi" onclick="window.open('https://wa.me/27757761266?text=Hi Alice')">WhatsApp Alice Support</button></div>
 <div class="box"><b>Admin@smpbrand.co.za</b> - Admin / Legal<br>WhatsApp Moses: +27 60 597 4789<br><button class="btn btn-dark" onclick="window.location.href='mailto:Admin@smpbrand.co.za'">Email Admin</button><button class="btn btn-pi" onclick="window.open('https://wa.me/27605974789?text=Hi Moses')">WhatsApp Moses Admin</button></div>
 </div></div>
-<div style="text-align:center;color:#888;font-size:12px;padding:14px">SMP Brand Super App © 2026 • Testnet • site.smpbrand.co.za<br>Johannesburg, Gauteng, South Africa • Rand = Value Only • Pay with Pi<br>Best in Pi Browser<br><a href="privacy.html" style="color:#ffcc00">Privacy</a> • <a href="terms.html" style="color:#ffcc00">Terms</a></div>
+
+<div style="text-align:center;color:#888;font-size:12px;padding:14px">SMP Brand Super App © 2026 • Testnet • site.smpbrand.co.za<br>Johannesburg, Gauteng, South Africa • Pay with Pi<br>Best in Pi Browser<br><a href="privacy.html" style="color:#ffcc00">Privacy</a> • <a href="terms.html" style="color:#ffcc00">Terms</a></div>
+
 <div class="tabs">
-<button class="active" onclick="showPage('home',this)">🏠<br>Home</button><button onclick="showPage('shop',this)">🛍️<br>Shop</button><button onclick="showPage('offices',this)">🏢<br>Offices</button><button onclick="showPage('vendor',this)">🏪<br>Vendor</button><button onclick="showPage('admin',this)">🔐<br>Admin</button><button onclick="showPage('games',this)">🎮<br>Games</button><button onclick="showPage('pay',this)">💳<br>Pay</button><button onclick="showPage('wallet',this)">👛<br>Wallet</button><button onclick="showPage('token',this)">🪙<br>Token</button><button onclick="showPage('map',this)">🗺️<br>Map</button><button onclick="showPage('gcv',this)">🧮<br>Micro Pi</button><button onclick="showPage('orders',this)">📦<br>Orders</button><button onclick="showPage('jobs',this)">💼<br>Jobs</button><button onclick="showPage('education',this)">🎓<br>Education</button><button onclick="showPage('ideas',this)">💡<br>Ideas</button><button onclick="showPage('enquiries',this)">❓<br>Enquiries</button><button onclick="showPage('contact',this)">📧<br>Contact</button>
+<button class="active" onclick="showPage('home',this)">🏠<br>Home</button><button onclick="showPage('shop',this)">🛍️<br>Shop</button><button onclick="showPage('offices',this)">🏢<br>Offices</button><button onclick="showPage('vendor',this)">🏪<br>Vendor</button><button onclick="showPage('admin',this)">🔐<br>Admin</button><button onclick="showPage('games',this)">🎮<br>Games</button><button onclick="showPage('pay',this)">💳<br>Pay</button><button onclick="showPage('wallet',this)">👛<br>Wallet</button><button onclick="showPage('map',this)">🗺️<br>Map</button><button onclick="showPage('orders',this)">📦<br>Orders</button><button onclick="showPage('jobs',this)">💼<br>Jobs</button><button onclick="showPage('education',this)">🎓<br>Education</button><button onclick="showPage('ideas',this)">💡<br>Ideas</button><button onclick="showPage('enquiries',this)">❓<br>Enquiries</button><button onclick="showPage('contact',this)">📧<br>Contact</button>
 </div>
+
 <script>
-const SMP_RATE=314159, RATE=17.536;
 let defaultProducts=[
 {name:"Maize Meal 10kg",rand:110,cat:"Food & Groceries",img:"https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400",hidden:false},
 {name:"Cooking Oil 2L",rand:75,cat:"Food & Groceries",img:"https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=400",hidden:false},
@@ -134,19 +132,38 @@ let defaultProducts=[
 {name:"Smartphone",rand:3500,cat:"Electronics",img:"https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400",hidden:false},
 {name:"Air Fryer",rand:1500,cat:"Home",img:"https://images.unsplash.com/photo-1585515320310-259814833e62?w=400",hidden:false},
 {name:"Toyota Corolla 2018",rand:180000,cat:"Cars",img:"https://images.unsplash.com/photo-1621007947382-bb3c3994e3fb?w=400",hidden:false},
-{name:"House 2-Bed Johannesburg, Gauteng",rand:550000,cat:"Property",img:"https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=400",hidden:false},
-{name:"Land 300sqm Johannesburg, Gauteng",rand:250000,cat:"Property",img:"https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=400",hidden:false},
+{name:"House 2-Bed Johannesburg",rand:550000,cat:"Property",img:"https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=400",hidden:false},
+{name:"Land 300sqm Johannesburg",rand:250000,cat:"Property",img:"https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=400",hidden:false},
 ];
 let products=JSON.parse(localStorage.getItem('smp_products_v2')||'null')||defaultProducts;
 function saveProducts(){localStorage.setItem('smp_products_v2',JSON.stringify(products)); broadcastUpdate();}
 let defaultOffices=[
-["🛍️ Shop Office","Maize Value R110 - Pay in Micro Pi","shop","Shop basics, delivery, pickup",false],["🏠 Property Office","2-Bed Value R550k - Johannesburg, Gauteng","officeForm","Property to buy / rent - upload proof, ID + Pi Username",false],["🌍 Land Office","300sqm Value R250k - Johannesburg, Gauteng","officeForm","Land to buy - upload deed / proof",false],["🚗 Cars Office","Corolla Value R180k - Gauteng","officeForm","Car to buy / sell - upload licence / logbook",false],["🌾 Farming Office","Goat Value R2,500, Cow R12,000 - Gauteng","officeForm","Farming - Goat / Cow / Maize - upload farm proof",false],["🧱 Building Office","Cement Value R115 - Gauteng","officeForm","Building / Hardware - upload quote / certificate",false],["🔧 Mechanic Office","Minor Value R850 - Gauteng","officeForm","Mechanic - upload trade certificate",false],["🧵 Embroidery Office","T-Shirt Value R350 - Gauteng","officeForm","Embroidery / Tailor - upload samples / certificate",false],["🛡️ Insurance Office","Funeral Value R150pm - Enquiry Only","officeForm","Insurance enquiry - upload ID + next of kin",false],["⚰️ Burial Society Office","Join Value R120pm - OWN GROUP","officeForm","Burial - upload ID + next of kin",false],["🤝 Stokvel Office","Grocery Value R500pm - OWN GROUP","officeForm","Stokvel - upload ID + monthly amount",false],["📱 Airtime Office","Airtime Value R10/R30/R100","officeForm","Airtime / Data - phone + Pi Username",false],["🚕 Transport Office","Taxi Value R18 - Gauteng","officeForm","Transport - upload driver licence / permit",false],["🏨 Hotel Office","Guesthouse Value R550 - Gauteng","officeForm","Hotel / Guesthouse - upload business proof",false],["💍 Gold / Business Office","Gold Value R45k","officeForm","Gold / Business - upload certificate / proof",false],["⚡ Solar Office","Solar Value R150k - Gauteng","officeForm","Solar - upload quote / installer certificate",false],["💼 Jobs Office","Managers, Skilled, Drivers - Gauteng, South Africa","jobs","Jobs - CV + certificate",false],["🎓 Education Office","Business + Pi","education","Education - learn + register",false],["💡 Ideas Spot","To Info@smpbrand.co.za","ideas","Ideas - send to Info",false],["❓ Enquiries Spot","To RIGHT email","enquiries","Enquiries - send to right email",false],["🚚 Delivery Office","Pickup FREE, PUDO R59 Value - Gauteng","officeForm","Delivery - PUDO / PAXI / Pargo - address + phone",false],["📧 Contact Office","4 Emails + 3 WhatsApps","contact","Contact - 4 emails + 3 WhatsApps",false],
+["🛍️ Shop Office","Maize R110 - Pay with Pi","shop","Shop basics, delivery, pickup",false],
+["🏠 Property Office","2-Bed R550k - Johannesburg","officeForm","Property to buy / rent",false],
+["🌍 Land Office","300sqm R250k - Johannesburg","officeForm","Land to buy",false],
+["🚗 Cars Office","Corolla R180k - Gauteng","officeForm","Car to buy / sell",false],
+["🌾 Farming Office","Goat R2,500, Cow R12,000 - Gauteng","officeForm","Farming - Goat / Cow / Maize",false],
+["🧱 Building Office","Cement R115 - Gauteng","officeForm","Building / Hardware",false],
+["🔧 Mechanic Office","Minor R850 - Gauteng","officeForm","Mechanic",false],
+["🧵 Embroidery Office","T-Shirt R350 - Gauteng","officeForm","Embroidery / Tailor",false],
+["⚰️ Burial Society Office","Join R120pm - OWN GROUP","officeForm","Burial - next of kin",false],
+["🤝 Stokvel Office","Grocery R500pm - OWN GROUP","officeForm","Stokvel",false],
+["📱 Airtime Office","Airtime R10/R30/R100","officeForm","Airtime / Data",false],
+["🚕 Transport Office","Taxi R18 - Gauteng","officeForm","Transport",false],
+["🏨 Hotel Office","Guesthouse R550 - Gauteng","officeForm","Hotel / Guesthouse",false],
+["💍 Gold / Business Office","Gold R45k","officeForm","Gold / Business",false],
+["⚡ Solar Office","Solar R150k - Gauteng","officeForm","Solar",false],
+["💼 Jobs Office","Managers, Skilled, Drivers - Gauteng","jobs","Jobs - CV + certificate",false],
+["🎓 Education Office","Business + Pi","education","Education",false],
+["💡 Ideas Spot","To Info@smpbrand.co.za","ideas","Ideas",false],
+["❓ Enquiries Spot","To RIGHT email","enquiries","Enquiries",false],
+["🚚 Delivery Office","Pickup FREE, PUDO R59 - Gauteng","officeForm","Delivery - PUDO / PAXI / Pargo",false],
+["📧 Contact Office","4 Emails + 3 WhatsApps","contact","Contact",false],
 ];
 let offices=JSON.parse(localStorage.getItem('smp_offices_v2')||'null')||defaultOffices;
 function saveOffices(){localStorage.setItem('smp_offices_v2',JSON.stringify(offices)); broadcastUpdate();}
 let cats=["All","Food & Groceries","Fashion","Beauty","Electronics","Home","Health","Digital","Services","Cars","Property"];
 let cur="All",orders=JSON.parse(localStorage.getItem('smp_orders')||'[]'),points=0,user=null,ideas=JSON.parse(localStorage.getItem('smp_ideas')||'[]'),currentOffice="",members=JSON.parse(localStorage.getItem('smp_members')||'[]'),vendorsList=JSON.parse(localStorage.getItem('smp_vendors')||'[]'),adminPending=null,adminLog=JSON.parse(localStorage.getItem('smp_admin_log')||'[]');
-// --- SMP ADMIN SYSTEM - Owner + 2 Slots ---
 let SMP_OWNER="Thebigm81";
 let SMP_ADMIN_SLOTS=JSON.parse(localStorage.getItem('smp_admin_slots')||'["",""]');
 let SMP_PENDING_ADMINS=JSON.parse(localStorage.getItem('smp_pending_admins')||'[]');
@@ -159,49 +176,59 @@ function refreshAll(){reloadFromStorage(); render(); alert('Refreshed ✅ Latest
 function clearAdminLog(){if(!adminPending) return alert('Login as Admin first'); adminLog=[]; saveAll(); render();}
 function adminLogout(){saveLog('Logged out'); adminPending=null; document.getElementById('adminPanel').style.display='none'; document.getElementById('adminMsg').innerText='Logged out ✅';}
 function requireAdmin(){if(!adminPending){alert('Login as Admin first - Login with Pi'); showPage('admin'); return false;} return true;}
-function priceHTML(r){let pi=(r/RATE/SMP_RATE).toFixed(8); return `Value R${r.toLocaleString()}<br><span style="font-size:11px;color:#ffcc00">Pay ${pi} Pi</span>`}
+function priceHTML(r){ return `Value R${r.toLocaleString()}<br><span style="font-size:11px;color:#ffcc00">Pay in Pi - Price set at checkout</span>`; }
 function render(){
 let c=document.getElementById('cats'); if(c) c.innerHTML=cats.map(x=>`<button class="${x===cur?'active':''}" onclick="filterCat('${x}')">${x}</button>`).join('');
-let g=document.getElementById('shopGrid'); if(g){g.innerHTML=''; let visible=products.filter(p=>!p.hidden && (cur==='All'||p.cat===cur)); visible.forEach((p,idx)=>{let realIdx=products.indexOf(p); g.innerHTML+=`<div class="card"><img src="${p.img}"><h4>${p.name}</h4><p>${priceHTML(p.rand)}</p><button onclick="buyProductById(${realIdx})">Pay with Pi</button></div>`});}
+let g=document.getElementById('shopGrid'); if(g){g.innerHTML=''; let visible=products.filter(p=>!p.hidden && (cur==='All'||p.cat===cur)); visible.forEach((p)=>{let realIdx=products.indexOf(p); g.innerHTML+=`<div class="card"><img src="${p.img}"><h4>${p.name}</h4><p>${priceHTML(p.rand)}</p><button onclick="buyProductById(${realIdx})">Pay with Pi</button></div>`});}
 let feat=document.getElementById('featured'); if(feat) feat.innerHTML=products.filter(p=>!p.hidden).slice(0,4).map(p=>{let realIdx=products.indexOf(p); return `<div class="card"><img src="${p.img}"><h4>${p.name}</h4><p>${priceHTML(p.rand)}</p><button onclick="buyProductById(${realIdx})">Pay with Pi</button></div>`}).join('');
 let ol=document.getElementById('officeList'); if(ol) ol.innerHTML=offices.filter(o=>!o[4]).map(o=>{let realIdx=offices.indexOf(o); return `<div class="box"><h4>${o[0]}</h4><p class="small">${o[1]}</p><button class="btn btn-pi" onclick="openOffice(${realIdx})">Open ${o[0]} → Register</button></div>`}).join('');
 let mp=document.getElementById('markupProd'); if(mp) mp.innerHTML=products.filter(p=>!p.hidden).map(p=>`<option value="${products.indexOf(p)}">${p.name} - SMP R${p.rand}</option>`).join('');
 updateOrders(); updateBackoffice();
 }
 function updateBackoffice(){
-let bpl=document.getElementById('boProductList'); if(bpl) bpl.innerHTML=products.map((p,i)=>`<div class="row"><b>${p.name}</b> - R${p.rand} ${p.hidden?'⛔ HIDDEN': '✅ LIVE'}<br><input id="boPrice_${i}" type="number" value="${p.rand}" placeholder="New Price"><button class="btn btn-pi btn-small" onclick="adminUpdatePriceById(${i})">Update Price</button><button class="btn btn-dark btn-small" onclick="adminToggleProductById(${i})">${p.hidden?'Show':'Hide'}</button><button class="btn btn-out btn-small" onclick="adminDeleteProduct(${i})">Delete</button></div>`).join('');
+let bpl=document.getElementById('boProductList'); if(bpl) bpl.innerHTML=products.map((p,i)=>`<div class="row"><b>${p.name}</b> - R${p.rand} ${p.hidden?'⛔ HIDDEN':'✅ LIVE'}<br><input id="boPrice_${i}" type="number" value="${p.rand}"><button class="btn btn-pi btn-small" onclick="adminUpdatePriceById(${i})">Update Price</button><button class="btn btn-dark btn-small" onclick="adminToggleProductById(${i})">${p.hidden?'Show':'Hide'}</button><button class="btn btn-out btn-small" onclick="adminDeleteProduct(${i})">Delete</button></div>`).join('');
 let bol=document.getElementById('boOfficeList'); if(bol) bol.innerHTML=offices.map((o,i)=>`<div class="row"><b>${o[0]}</b> - ${o[4]?'⛔ OFF':'✅ ON'}<button class="btn btn-dark btn-small" onclick="adminToggleOfficeById(${i})">${o[4]?'Turn ON':'Turn OFF'}</button></div>`).join('');
-let am=document.getElementById('adminMembers'); if(am) am.innerHTML=members.length?members.map((m,i)=>`<div class="row"><b>${m.name}</b> | ${m.pi} | ${m.office} | ${m.area||'Gauteng, SA'} | ${m.blocked?'⛔ Blocked':'✅ Active'} | Cert: ${m.cert?'✅':'⏳'}<br><button class="btn btn-pi btn-small" onclick="adminApproveMember(${i})">Approve</button><button class="btn btn-dark btn-small" onclick="adminBlockMemberById(${i})">${m.blocked?'Unblock':'Block'}</button><button class="btn btn-out btn-small" onclick="adminDeleteMember(${i})">Delete</button></div>`).join(''):'<p class="small">No members yet</p>';
-let av=document.getElementById('adminVendors'); if(av) av.innerHTML=vendorsList.length?vendorsList.map((v,i)=>`<div class="row"><b>${v.name}</b> | ${v.biz} | ${v.pi} | ${v.cat} | ${v.area||'Gauteng, SA'} | ${v.approved?'✅ Approved':'⏳ Pending'} | Cert: ${v.cert?'✅':'⏳'}<br><button class="btn btn-pi btn-small" onclick="adminApproveVendorById(${i})">Approve</button><button class="btn btn-dark btn-small" onclick="adminRejectVendor(${i})">Reject</button><button class="btn btn-out btn-small" onclick="adminDeleteVendor(${i})">Delete</button></div>`).join(''):'<p class="small">No vendor applications yet</p>';
+let am=document.getElementById('adminMembers'); if(am) am.innerHTML=members.length?members.map((m,i)=>`<div class="row"><b>${m.name}</b> | ${m.pi} | ${m.office} | ${m.area||'Gauteng'}<br><button class="btn btn-pi btn-small" onclick="adminApproveMember(${i})">Approve</button><button class="btn btn-dark btn-small" onclick="adminBlockMemberById(${i})">${m.blocked?'Unblock':'Block'}</button><button class="btn btn-out btn-small" onclick="adminDeleteMember(${i})">Delete</button></div>`).join(''):'<p class="small">No members yet</p>';
+let av=document.getElementById('adminVendors'); if(av) av.innerHTML=vendorsList.length?vendorsList.map((v,i)=>`<div class="row"><b>${v.name}</b> | ${v.biz} | ${v.pi} | ${v.cat} | ${v.area||'Gauteng'} | ${v.approved?'✅ Approved':'⏳ Pending'}<br><button class="btn btn-pi btn-small" onclick="adminApproveVendorById(${i})">Approve</button><button class="btn btn-dark btn-small" onclick="adminRejectVendor(${i})">Reject</button><button class="btn btn-out btn-small" onclick="adminDeleteVendor(${i})">Delete</button></div>`).join(''):'<p class="small">No vendor applications yet</p>';
 let lg=document.getElementById('adminLog'); if(lg) lg.innerHTML=adminLog.length?adminLog.map(l=>`<p class="small">${l.time} - <b>${l.who}</b>: ${l.action}</p>`).join(''):'<p class="small">No actions yet</p>';
 let aM=document.getElementById('aMembers'); if(aM) aM.innerText=members.length;
 let aV=document.getElementById('aVendors'); if(aV) aV.innerText=vendorsList.filter(v=>v.approved).length+' / '+vendorsList.length;
 }
-function openOffice(i){let o=offices[i]; currentOffice=o[0]; if(o[2]==='officeForm'){document.getElementById('officeFormTitle').innerText=o[0]+' - Registration'; document.getElementById('officeFormDesc').innerText=o[3]+' | Provide Digital Pioneer Credentials.'; let extra=''; if(o[0].includes('Burial')) extra='<input id="ofExtra1" placeholder="Next of Kin - Full Name + Phone"><input id="ofExtra2" placeholder="Monthly Amount - Value R120pm">'; if(o[0].includes('Farming')) extra='<input id="ofExtra1" placeholder="Farm Location - e.g Johannesburg, Gauteng"><input id="ofExtra2" placeholder="What do you farm? Goat / Cow / Maize">'; if(o[0].includes('Transport')) extra='<input id="ofExtra1" placeholder="Driver Licence Number (last 4)"><input id="ofExtra2" placeholder="Vehicle / Taxi Association">'; if(o[0].includes('Property')) extra='<input id="ofExtra1" placeholder="Buy or Rent?"><input id="ofExtra2" placeholder="Budget - Value R...">'; document.getElementById('officeExtra').innerHTML=extra; showPage('officeForm');} else {showPage(o[2]);}}
-function submitOfficeForm(){let n=document.getElementById('ofName').value||'Pioneer'; let piU=document.getElementById('ofPiUser').value||''; let ph=document.getElementById('ofPhone').value||''; let area=document.getElementById('ofArea')?document.getElementById('ofArea').value||'Gauteng, South Africa':'Gauteng, South Africa'; if(!piU){alert('Please add Pi Username - Digital Credentials required');return;} let hasCred=document.getElementById('ofCred').files.length>0; let hasCert=document.getElementById('ofCert').files.length>0; members.push({name:n,pi:piU,phone:ph,area:area,office:currentOffice,cred:hasCred,cert:hasCert,blocked:false,approved:false}); saveAll(); saveLog('New member registered: '+n+' in '+currentOffice+' - '+area); document.getElementById('ofOut').innerText='Thank you '+n+'! Registered for '+currentOffice+' | Area: '+area+' | Pi: '+piU+' | Status: ⏳ Pending Admin Check'; alert('Registered for '+currentOffice+' - '+area+' - Sent to Admin Backoffice.'); render();}
+function openOffice(i){let o=offices[i]; currentOffice=o[0]; if(o[2]==='officeForm'){document.getElementById('officeFormTitle').innerText=o[0]+' - Registration'; document.getElementById('officeFormDesc').innerText=o[3]+' | Register with Pi Login.'; let extra=''; if(o[0].includes('Burial')) extra='<input id="ofExtra1" placeholder="Next of Kin - Full Name + Phone"><input id="ofExtra2" placeholder="Monthly Amount - R120pm">'; if(o[0].includes('Farming')) extra='<input id="ofExtra1" placeholder="Farm Location"><input id="ofExtra2" placeholder="What do you farm? Goat / Cow / Maize">'; if(o[0].includes('Transport')) extra='<input id="ofExtra1" placeholder="Vehicle / Taxi Association"><input id="ofExtra2" placeholder="Route / Area">'; if(o[0].includes('Property')) extra='<input id="ofExtra1" placeholder="Buy or Rent?"><input id="ofExtra2" placeholder="Budget - R...">'; document.getElementById('officeExtra').innerHTML=extra; showPage('officeForm');} else {showPage(o[2]);}}
+function submitOfficeForm(){let n=document.getElementById('ofName').value||'Pioneer'; let piU=document.getElementById('ofPiUser').value||''; let ph=document.getElementById('ofPhone').value||''; let area=document.getElementById('ofArea')?document.getElementById('ofArea').value||'Gauteng, South Africa':'Gauteng, South Africa'; if(!piU){alert('Please add Pi Username');return;} members.push({name:n,pi:piU,phone:ph,area:area,office:currentOffice,blocked:false,approved:false}); saveAll(); saveLog('New member: '+n+' in '+currentOffice); document.getElementById('ofOut').innerText='Thank you '+n+'! Registered for '+currentOffice+' | Pi: '+piU+' | ⏳ Pending Admin Check'; alert('Registered for '+currentOffice+' - Sent to Admin.'); render();}
 function filterCat(x){cur=x;render();}
 function showPage(id,el){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));let pg=document.getElementById(id+'Page'); if(pg) pg.classList.add('active'); if(el){document.querySelectorAll('.tabs button').forEach(b=>b.classList.remove('active'));el.classList.add('active');}window.scrollTo(0,0);}
-function loginPi(){if(typeof Pi==='undefined'){alert('Open in Pi Browser to Login with Pi. Guest mode for now.');document.getElementById('userInfo').innerText='Guest Mode - Open in Pi Browser for full login';return;}try{Pi.authenticate(['username','payments'],function(a){user=a.user;document.getElementById('userInfo').innerText='Welcome @'+user.username+' ✅';document.getElementById('walletInfo').innerText='Connected as @'+user.username;});}catch(e){alert(e.message)}}
+
+// ===== PI NETWORK - CORRECT =====
+function onIncompletePaymentFound(payment){ console.log("Incomplete payment:", payment); }
+function loginPi(){
+  if(typeof Pi==='undefined'){ alert('Open in Pi Browser to Login with Pi.'); return; }
+  Pi.authenticate(['username'], onIncompletePaymentFound)
+  .then(function(auth){ user=auth.user; document.getElementById('userInfo').innerText='Welcome @'+user.username+' ✅'; var w=document.getElementById('walletInfo'); if(w) w.innerText='Connected as @'+user.username; })
+  .catch(function(e){ alert(e.message); });
+}
 function loginPiAdmin(){
-  if(typeof Pi==='undefined'){alert('Open in Pi Browser to Login as Admin.');return;}
-  try{Pi.authenticate(['username'],function(a){
-    let uname=a.user.username;
-    let allowed=[SMP_OWNER, SMP_ADMIN_SLOTS[0], SMP_ADMIN_SLOTS[1]].filter(x=>x && x!=="");
-    if(allowed.includes(uname)){
-      adminPending={name:uname, pi:uname};
-      user=a.user;
-      document.getElementById('adminPanel').style.display='block';
-      document.getElementById('adminMsg').innerText='Welcome Admin @'+uname+' ✅ Pi Verified';
-      if(uname===SMP_OWNER){
-        document.getElementById('adminExtra').innerHTML='<p class="small"><b>Owner Control - @Thebigm81</b><br>Slot 1: '+(SMP_ADMIN_SLOTS[0]||'EMPTY - waiting')+'<br>Slot 2: '+(SMP_ADMIN_SLOTS[1]||'EMPTY - waiting')+'<br>Pending requests: '+(SMP_PENDING_ADMINS.join(', ')||'None')+'</p>'+'<input id="slot1In" placeholder="Slot 1 Pi Username" value="'+(SMP_ADMIN_SLOTS[0]||'')+'">'+'<input id="slot2In" placeholder="Slot 2 Pi Username" value="'+(SMP_ADMIN_SLOTS[1]||'')+'">'+'<button class="btn btn-pi" onclick="saveAdminSlots()">Save 2 Admin Slots ✅</button>'+'<p class="small">You type their Pi username ONLY when you know it is really them.</p>';
-      } else {
-        document.getElementById('adminExtra').innerHTML='<p class="small">Admin: @'+uname+' | Pi Verified ✅ | Approved by Owner</p>';
-      }
-      saveLog('Admin logged in with Pi: @'+uname); render(); return;
+  if(typeof Pi==='undefined'){ alert('Open in Pi Browser to Login as Admin.'); return; }
+  Pi.authenticate(['username'], onIncompletePaymentFound)
+  .then(function(auth){
+    let uname=auth.user.username;
+    let allowed=[SMP_OWNER, SMP_ADMIN_SLOTS[0], SMP_ADMIN_SLOTS[1]].filter(x=>x!=="");
+    if(!allowed.includes(uname)){
+      alert('Not an admin yet. Request sent to Owner @Thebigm81');
+      if(!SMP_PENDING_ADMINS.includes(uname)){ SMP_PENDING_ADMINS.push(uname); localStorage.setItem('smp_pending_admins', JSON.stringify(SMP_PENDING_ADMINS)); }
+      return;
     }
-    if(!SMP_PENDING_ADMINS.includes(uname)){ SMP_PENDING_ADMINS.push(uname); localStorage.setItem('smp_pending_admins',JSON.stringify(SMP_PENDING_ADMINS)); }
-    alert('⏳ Request Sent to Owner @Thebigm81\n\nYou are @'+uname+'\nYou are NOT admin yet.\nOwner must add your username to Slot 1 or Slot 2 after verifying it is really you.');
-  });}catch(e){alert(e.message)}
+    adminPending={name:uname, pi:uname}; user=auth.user;
+    document.getElementById('adminPanel').style.display='block';
+    document.getElementById('adminMsg').innerText='Welcome Admin @'+uname+' ✅ Pi Verified';
+    if(uname===SMP_OWNER){
+      document.getElementById('adminExtra').innerHTML='<p class="small"><b>Owner Control - @Thebigm81</b><br>Slot 1: '+(SMP_ADMIN_SLOTS[0]||'EMPTY')+'<br>Slot 2: '+(SMP_ADMIN_SLOTS[1]||'EMPTY')+'<br>Pending: '+(SMP_PENDING_ADMINS.join(', ')||'None')+'</p>'+'<input id="slot1In" placeholder="Slot 1 Pi Username" value="'+(SMP_ADMIN_SLOTS[0]||'')+'">'+'<input id="slot2In" placeholder="Slot 2 Pi Username" value="'+(SMP_ADMIN_SLOTS[1]||'')+'">'+'<button class="btn btn-pi" onclick="saveAdminSlots()">Save 2 Admin Slots ✅</button>';
+    } else {
+      document.getElementById('adminExtra').innerHTML='<p class="small">Admin: @'+uname+' | Pi Verified ✅ | Approved by Owner</p>';
+    }
+    saveLog('Admin logged in with Pi: @'+uname); render();
+  })
+  .catch(function(e){ alert(e.message); });
 }
 function saveAdminSlots(){
   if(!adminPending || adminPending.pi!==SMP_OWNER){alert('Only Owner @Thebigm81 can save slots');return;}
@@ -211,74 +238,56 @@ function saveAdminSlots(){
   localStorage.setItem('smp_admin_slots',JSON.stringify(SMP_ADMIN_SLOTS));
   SMP_PENDING_ADMINS=SMP_PENDING_ADMINS.filter(x=>x!==s1 && x!==s2);
   localStorage.setItem('smp_pending_admins',JSON.stringify(SMP_PENDING_ADMINS));
-  alert('Saved ✅\nSlot 1: '+(s1||'EMPTY')+'\nSlot 2: '+(s2||'EMPTY')+'\nThey can now Login as Admin.');
+  alert('Saved ✅ Slot 1: '+(s1||'EMPTY')+' Slot 2: '+(s2||'EMPTY'));
   loginPiAdmin();
 }
-function buyProductById(i){let p=products[i]; if(!p) return alert('Product not found'); buyProduct(p.name,p.rand);}
+function buyProductById(i){let p=products[i]; if(!p) return alert('Product not found'); payPi(p.name,p.rand);}
 function buyProduct(n,r){ payPi(n,r); }
 async function payPi(n,r){
+  if(typeof Pi==='undefined'){ alert('Open in Pi Browser to pay with Test-Pi.'); return; }
   try{
-    let delSel=document.getElementById('delSel');
-    let del=delSel?parseFloat(delSel.value)||0:0;
-    if(r>=500) del=0;
-    let grand=r+del;
-    let pi=parseFloat((grand/RATE/SMP_RATE).toFixed(8));
-    if(!n){
+    let auth = await Pi.authenticate(['username','payments'], onIncompletePaymentFound);
+    user = auth.user;
+    let pi = 0;
+    if(n){
+      let input = prompt('Enter Pi amount to pay for '+n+' - e.g 0.1');
+      pi = parseFloat(input);
+    } else {
       let manual=document.getElementById('payAmt');
-      pi=parseFloat(manual?manual.value||0:0);
-      if(!pi||pi<=0){ alert('Enter Pi amount first - e.g 0.00006353'); return; }
-      grand=Math.round(pi*RATE*SMP_RATE);
+      pi = parseFloat(manual?manual.value||0:0);
     }
-    orders.push({name:n||"Pi Payment",rand:r,delivery:del,total:grand,pi:pi,date:new Date().toLocaleString(),status:'Paid - Pi HELD by SMP',stage:'paid'});
-    saveAll(); saveLog('New order: '+(n||"Pi Payment")+' R'+grand+' - Pi HELD'); updateOrders();
-    if(typeof Pi==='undefined'){
-      alert('✅ Order Created!\n'+(n||"Pi Payment")+'\nValue R'+grand+'\nPAY: '+pi+' Pi\n\nNOTE: Open in Pi Browser to pay REAL Test-Pi.');
-      showPage('orders'); return;
-    }
-    await Pi.authenticate(['username','payments'],()=>{});
-    alert('Pi Wallet Opening...\nPay '+pi+' Pi for '+(n||"Pi Payment"));
-    await Pi.createPayment({amount:pi,memo:"SMP - "+(n||"Pi Payment")+" - R"+grand,metadata:{product:n||"Pi Payment",priceZAR:grand}},{
-      onReadyForServerApproval:(pid)=>{ alert('Pi Payment Created: '+pid+'\nTestnet Demo - Order already saved in Orders.'); },
-      onReadyForServerCompletion:(pid,txid)=>{ alert('✅ Paid! TX: '+txid); showPage('orders'); },
-      onCancel:()=>{ alert('Payment cancelled - Order still saved in Orders'); },
-      onError:(e)=>{ alert('Pi Error (order still saved): '+e); }
+    if(!pi || pi<=0){ alert('Enter Pi amount first - e.g 0.1'); return; }
+    await Pi.createPayment({amount: pi, memo: "SMP - "+(n||"Order"), metadata:{product: n||"Order"}}, {
+      onReadyForServerApproval: function(pid){ alert('Testnet Payment Created: '+pid+'\nComplete it in Pi Wallet.'); },
+      onReadyForServerCompletion: function(pid, txid){ alert('✅ Paid! TX: '+txid); orders.push({name:n||"Pi Payment", pi:pi, date:new Date().toLocaleString(), status:'Paid'}); saveAll(); render(); showPage('orders'); },
+      onCancel: function(){ alert('Payment cancelled'); },
+      onError: function(e){ alert('Pi Error: '+e); }
     });
-  }catch(e){
-    alert('Button Error: '+e.message+'\nCheck Orders page - order may still be saved.');
-    showPage('orders');
-  }
+  }catch(e){ alert(e.message); }
 }
 function updateOrders(){
 let b=document.getElementById('ordersBox'); if(!b) return;
 if(!orders.length){b.innerHTML='<p class="small">No orders yet.</p>';} else {
-b.innerHTML=orders.map((o,idx)=>`<div class="row"><b>${o.name}</b><br><span style="color:#ffcc00">Value R${o.total} | PAY ${o.pi.toFixed(8)} Pi</span><br><small>Status: ${o.status} • ${o.date}</small><br>${o.stage==='paid'?'<button class="btn btn-dark" onclick="adminMarkShipped('+idx+')">📦 Mark Shipped</button>':''}${o.stage==='shipped'?'<button class="btn btn-pi" onclick="pioneerReceived('+idx+')">✅ I Received - Release Pi</button>':''}${o.stage==='received'?'<span style="color:#00ff88">✅ Received - Vendor Can Now Withdraw</span>':''}</div>`).join('');
+b.innerHTML=orders.map((o,idx)=>`<div class="row"><b>${o.name}</b><br><span style="color:#ffcc00">PAY ${o.pi.toFixed(8)} Pi</span><br><small>Status: ${o.status} • ${o.date}</small></div>`).join('');
 }
-let ao=document.getElementById('adminOrders'); if(ao) ao.innerHTML=orders.length?orders.map((o,idx)=>`<div class="row"><b>${o.name}</b> - R${o.total} - ${o.pi.toFixed(8)} Pi - ${o.status}<br><button class="btn btn-dark btn-small" onclick="adminMarkShipped(${idx})">📦 Mark Shipped</button><button class="btn btn-pi btn-small" onclick="adminRelease(${idx})">💰 Release (only if Received)</button><button class="btn btn-out btn-small" onclick="adminDeleteOrder(${idx})">Delete Order</button></div>`).join(''):'No orders yet';
-let aO=document.getElementById('aOrders'); if(aO) aO.innerText=orders.length; let aR=document.getElementById('aRand'); if(aR) aR.innerText='R'+orders.reduce((a,o)=>a+o.total,0).toLocaleString();
-let held=orders.filter(o=>o.stage!=='received').reduce((a,o)=>a+o.pi,0); let rel=orders.filter(o=>o.stage==='received').reduce((a,o)=>a+o.pi,0);
-let ah=document.getElementById('aHeld'); if(ah) ah.innerText=held.toFixed(8)+' Pi'; let ar=document.getElementById('aReleased'); if(ar) ar.innerText=rel.toFixed(8)+' Pi';
-let wb=document.getElementById('vendorWithdrawBtn'); if(wb){let anyReceived=orders.some(o=>o.stage==='received'); if(anyReceived){wb.className='btn btn-pi'; wb.innerText='💰 Withdraw Pi - Pioneer Received ✅';} else {wb.className='btn btn-grey'; wb.innerText='🔒 Withdraw Locked - Waiting for Pioneer Received';}}
+let ao=document.getElementById('adminOrders'); if(ao) ao.innerHTML=orders.length?orders.map((o,idx)=>`<div class="row"><b>${o.name}</b> - ${o.pi.toFixed(8)} Pi - ${o.status}<br><button class="btn btn-out btn-small" onclick="adminDeleteOrder(${idx})">Delete Order</button></div>`).join(''):'No orders yet';
+let aO=document.getElementById('aOrders'); if(aO) aO.innerText=orders.length;
 }
-function adminMarkShipped(idx){if(!requireAdmin()) return; if(orders[idx].stage!=='paid'){alert('Order is already '+orders[idx].status); return;} orders[idx].stage='shipped'; orders[idx].status='🚚 Shipped - Waiting for Pioneer Received'; saveAll(); saveLog('Marked Shipped: '+orders[idx].name); render(); alert('Order marked Shipped ✅ Pioneer must now click Received');}
-function pioneerReceived(idx){if(orders[idx].stage!=='shipped'){alert('Order must be Shipped first'); return;} orders[idx].stage='received'; orders[idx].status='✅ Received - Pi Released to Vendor'; saveAll(); saveLog('Pioneer clicked Received: '+orders[idx].name+' - Pi Released'); render(); alert('Thank you! You clicked Received ✅ Pi now released to Vendor. Vendor can withdraw.');}
-function adminRelease(idx){if(!requireAdmin()) return; if(orders[idx].stage!=='received'){alert('Cannot release yet! Pioneer must click ✅ I Received first.');return;} saveLog('Admin released Pi: '+orders[idx].name); alert('Pi Released to Vendor ✅ - Already released on Received');}
 function adminDeleteOrder(idx){if(!requireAdmin()) return; if(!confirm('Delete this order? '+orders[idx].name)) return; saveLog('Deleted order: '+orders[idx].name); orders.splice(idx,1); saveAll(); render();}
-function vendorWithdraw(){let anyReceived=orders.some(o=>o.stage==='received'); if(!anyReceived){alert('🔒 Locked - Pioneer has not clicked Received yet.');return;} document.getElementById('withdrawOut').innerText='✅ Withdraw Approved - Pi Released. Check Pi Wallet.'; alert('Withdraw Approved ✅ Pi Released to Vendor Wallet');}
-function applyVendor(){let n=document.getElementById('vName').value||'Pioneer';let biz=document.getElementById('vBiz').value||''; let cat=document.getElementById('vCat').value; let piU=document.getElementById('vPiUser').value||''; let area=document.getElementById('vArea')?document.getElementById('vArea').value||'Gauteng, South Africa':'Gauteng, South Africa'; let hasCert=document.getElementById('vCert').files.length>0; if(!piU){alert('Please add Pi Username');return;} if(!user){alert('Please Login with Pi first to verify you are real Pioneer');return;} vendorsList.push({name:n,biz:biz,pi:piU,area:area,cat:cat,cert:hasCert,approved:false}); saveAll(); saveLog('New vendor application: '+n+' - '+area); window.location.href='mailto:Admin@smpbrand.co.za?subject=Vendor Application - '+encodeURIComponent(cat)+'&body='+encodeURIComponent('Name:'+n+' Pi:'+piU+' Area:'+area+' Cert:'+(hasCert?'Uploaded':'Missing')); alert('Thank you '+n+'! Vendor application sent to Admin. Status: ⏳ Pending'); document.getElementById('vendorList').innerHTML+='<br>⏳ '+n+' - '+cat+' - '+piU+' - '+area+' - Pending Verification'; render();}
+function applyVendor(){let n=document.getElementById('vName').value||'Pioneer';let biz=document.getElementById('vBiz').value||''; let cat=document.getElementById('vCat').value; let piU=document.getElementById('vPiUser').value||''; let area=document.getElementById('vArea')?document.getElementById('vArea').value||'Gauteng, South Africa':'Gauteng, South Africa'; if(!piU){alert('Please add Pi Username');return;} if(!user){alert('Please Login with Pi first');return;} vendorsList.push({name:n,biz:biz,pi:piU,area:area,cat:cat,approved:false}); saveAll(); saveLog('New vendor: '+n+' - '+area); window.location.href='mailto:Admin@smpbrand.co.za?subject=Vendor Application - '+encodeURIComponent(cat)+'&body='+encodeURIComponent('Name:'+n+' Pi:'+piU+' Area:'+area); alert('Thank you '+n+'! Vendor application sent to Admin. ⏳ Pending'); document.getElementById('vendorList').innerHTML+='<br>⏳ '+n+' - '+cat+' - '+piU+' - '+area+' - Pending'; render();}
 function addVendorMarkup(){
   let idx=parseInt(document.getElementById('markupProd').value);
   let mk=parseFloat(document.getElementById('markupAmt').value)||0;
   let area=document.getElementById('markupArea').value;
   let base=products[idx];
-  if(mk < 0){alert('❌ BLOCKED - You cannot sell LOWER than SMP price.'); document.getElementById('markupOut').innerText='❌ Blocked - Markup cannot be negative. SMP Price R'+base.rand+' is minimum.'; return;}
-  if(mk > 100){if(!confirm('Markup R'+mk+' is very high for '+area+'. Is this fair? Click OK to continue.')) return;}
+  if(mk < 0){alert('❌ BLOCKED - You cannot sell LOWER than SMP price.'); return;}
+  if(mk > 100){if(!confirm('Markup R'+mk+' is very high for '+area+'. Continue?')) return;}
   let sellPrice=base.rand+mk;
   products.push({name:base.name+' - Vendor '+area,rand:sellPrice,cat:base.cat,img:base.img,hidden:false});
   saveProducts();
-  document.getElementById('markupOut').innerText='Added LIVE ✅ '+base.name+' | SMP R'+base.rand+' + Markup R'+mk+' ('+area+') = Your Price R'+sellPrice;
-  render(); alert('Markup added LIVE ✅\nSMP: R'+base.rand+'\nYour Markup: R'+mk+'\nYour Price: R'+sellPrice+'\nArea: '+area);
+  document.getElementById('markupOut').innerText='Added LIVE ✅ '+base.name+' | SMP R'+base.rand+' + Markup R'+mk+' ('+area+') = R'+sellPrice;
+  render(); alert('Markup added LIVE ✅ R'+sellPrice+' Area: '+area);
 }
-function saveMyWallet(){let w=document.getElementById('myWalletAddr').value||''; let piU=document.getElementById('myPiUser2').value||''; if(!w && !piU){alert('Add Pi Wallet OR Pi Username');return;} if(w) localStorage.setItem('smp_my_wallet',w); document.getElementById('walletSaveOut').innerText='Saved ✅ Wallet: '+(w||'Add Later')+' | Pi: '+(piU||'Add Later'); alert('Pi Wallet Saved');}
 function adminUpdatePriceById(i){if(!requireAdmin()) return; let inp=document.getElementById('boPrice_'+i); let np=parseFloat(inp.value); if(!np||np<=0){alert('Enter valid price over 0');return;} let old=products[i].rand; products[i].rand=np; saveProducts(); saveLog('Updated price: '+products[i].name+' R'+old+' → R'+np); render(); alert('Price UPDATED ✅ '+products[i].name+' now R'+np);}
 function adminToggleProductById(i){if(!requireAdmin()) return; products[i].hidden=!products[i].hidden; saveProducts(); saveLog((products[i].hidden?'Hid product: ':'Showed product: ')+products[i].name); render();}
 function adminDeleteProduct(i){if(!requireAdmin()) return; if(!confirm('Delete product? '+products[i].name)) return; saveLog('Deleted product: '+products[i].name); products.splice(i,1); saveProducts(); render();}
@@ -291,11 +300,8 @@ function adminApproveVendorById(i){if(!requireAdmin()) return; vendorsList[i].ap
 function adminRejectVendor(i){if(!requireAdmin()) return; vendorsList[i].approved=false; saveAll(); saveLog('Rejected vendor: '+vendorsList[i].name); render(); alert('Vendor Rejected ⛔ '+vendorsList[i].name);}
 function adminDeleteVendor(i){if(!requireAdmin()) return; if(!confirm('Delete vendor? '+vendorsList[i].name)) return; saveLog('Deleted vendor: '+vendorsList[i].name); vendorsList.splice(i,1); saveAll(); render();}
 function openGame(n){points+=10;document.getElementById('gamePoints').innerText=points;alert(n+' - You earned 10 points! Total: '+points);}
-function createToken(){let n=document.getElementById('tName').value||'My Asset';let v=parseFloat(document.getElementById('tValue').value)||10000;let pi=v/RATE/SMP_RATE; document.getElementById('tokenList').innerHTML+='<br>🪙 '+n+' - Value R'+v+' = Pay '+pi.toFixed(8)+' Pi'; document.getElementById('tokOut').innerText='Value R'+v+' = Pay '+pi.toFixed(8)+' Pi'; alert('Token Concept Created (Testnet)');}
-function calcGCV(){let v=parseFloat(document.getElementById('gcvRand').value)||0;let gcv=parseFloat(document.getElementById('consVal').value)||314159;let rate=parseFloat(document.getElementById('randRate').value)||17.536;document.getElementById('gcvOut').innerText=(v/rate/gcv).toFixed(8)+' Pi';}
-function calcGCV2(){let v=parseFloat(document.getElementById('gcvPi').value)||0;let gcv=parseFloat(document.getElementById('consVal').value)||314159;let rate=parseFloat(document.getElementById('randRate').value)||17.536;document.getElementById('gcvOut2').innerText='$'+(v*gcv).toLocaleString()+' = R'+(v*gcv*rate).toLocaleString()+' Value';}
 function submitIdea(){let t=document.getElementById('ideaText').value; if(!t) return alert('Write idea'); ideas.push(t); localStorage.setItem('smp_ideas',JSON.stringify(ideas)); window.location.href='mailto:Info@smpbrand.co.za?subject=IDEA REQUEST&body='+encodeURIComponent(t); alert('Idea sent to Info');}
 function submitEnq(){let type=document.getElementById('enqType').value,msg=document.getElementById('enqMsg').value,name=document.getElementById('enqName').value,phone=document.getElementById('enqPhone').value; let map={General:'Info@smpbrand.co.za',Sales:'Sales@smpbrand.co.za',Support:'Support@smpbrand.co.za',Admin:'Admin@smpbrand.co.za',Complaint:'Support@smpbrand.co.za',Review:'Support@smpbrand.co.za'}; let to=map[type]; window.location.href='mailto:'+to+'?subject=ENQUIRY - '+type+'&body='+encodeURIComponent('Name:'+name+' Phone:'+phone+' Msg:'+msg); alert('Enquiry sent to '+to);}
-function applyJob(){let j=document.getElementById('jobType').value,n=document.getElementById('jobName').value; let piU=document.getElementById('jobPiUser').value||''; let area=document.getElementById('jobArea')?document.getElementById('jobArea').value||'Gauteng, South Africa':'Gauteng, South Africa'; let hasCert=document.getElementById('jobCert').files.length>0; members.push({name:n,pi:piU,phone:'',area:area,office:'Jobs - '+j,cred:hasCert,cert:hasCert,blocked:false,approved:false}); saveAll(); saveLog('New job application: '+n+' - '+j+' - '+area); window.location.href='mailto:Admin@smpbrand.co.za?subject=JOB - '+encodeURIComponent(j)+'&body='+encodeURIComponent(n+' Pi:'+piU+' Area:'+area+' Cert:'+(hasCert?'Uploaded':'Missing')); alert('Job application sent to Admin - '+area); render();}
+function applyJob(){let j=document.getElementById('jobType').value,n=document.getElementById('jobName').value; let piU=document.getElementById('jobPiUser').value||''; let area=document.getElementById('jobArea')?document.getElementById('jobArea').value||'Gauteng, South Africa':'Gauteng, South Africa'; members.push({name:n,pi:piU,phone:'',area:area,office:'Jobs - '+j,blocked:false,approved:false}); saveAll(); saveLog('New job: '+n+' - '+j); window.location.href='mailto:Admin@smpbrand.co.za?subject=JOB - '+encodeURIComponent(j)+'&body='+encodeURIComponent(n+' Pi:'+piU+' Area:'+area); alert('Job application sent to Admin - '+area); render();}
 render();
 </script></body></html>
